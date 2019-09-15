@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	<h1>Update</h1>
+	<h3>RPM</h3>
+	<br />
+	If you use RPM package then just type:
+	<div class="code_div">
+		<pre>
+yum install haproxy-wi
+		</pre>
+	</div>
+	If servers uses proxy to connection Internet add proxy settings in yum.conf:
+	<div class="code_div">
+		<pre>
+vi /etc/yum.conf
+proxy=proto://ip:port
+		</pre>
+	</div>
+	How to install RPM read in <a href="/installation.py" title="Installation">Installation</a> man
+	<h3>Manual</h3>
+	<br />
+	If you use manual installation then:
+	<div class="code_div">
+		<pre>
+cd /var/www/haproxy-wi
+./update.py
+		</pre>
+	</div>
+</div>
+{% endblock %}

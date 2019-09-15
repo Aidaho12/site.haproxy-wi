@@ -1,0 +1,110 @@
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147648038-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-147648038-1');
+		</script>
+
+		<title>{{title}} - HAproxy-WI</title>
+		<meta charset="UTF-8">	
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link href="/inc/images/favicon.ico" rel="icon" type="image/png" />
+		<script>
+			FontAwesomeConfig = { searchPseudoElements: true, observeMutations: false };
+		</script>
+		<script defer src="/inc/fa-solid.min.js"></script>
+		<script defer src="/inc/fontawesome.min.js"></script>
+		<link href="/inc/awesome.css" rel="stylesheet">
+		<!-- <link href="/inc/vertical_scrol/custom_scrollbar.css" rel="stylesheet"> -->
+		<link href="/inc/style.css" rel="stylesheet">
+		<link href="/inc/nprogress.css" rel="stylesheet">
+		<link rel="stylesheet" href="/inc/jquery-ui.css">
+		<script src="/inc/jquery-1.12.4.js"></script>
+		<script src="/inc/jquery-ui.js"></script>
+		<script src="/inc/js-cookie.js"></script>
+		<script src="/inc/script.js"></script>
+		<script src="/inc/nprogress.js"></script>
+		<!-- <script src="/inc/vertical_scrol/custom_scrollbar.min.js"></script> -->
+		<meta name="description" content="Web interface(user-friendly web GUI, alerting, monitoring and secure) for managing Haproxy servers" />
+		<meta name="keywords" content="haproxy-servers web-interface management web-manager web-gui web interface gui frontend webui haproxy-configuration haproxy-status haproxy-gui haproxy-wi haproxy-managment high-availibility loadbalancer lbs waf" />
+		</description>
+	</head>
+	<body>
+		<a name="top"></a>
+		<div class="show_menu" style="display: none;">
+			<a href="#" id="show_menu" title="Show menu" style="margin-top: 30px;position: absolute;">
+				<span class="ui-state-default ui-corner-all">
+					<span class="ui-icon ui-icon-arrowthick-1-e" id="arrow"></span>
+				</span>
+			</a>
+		</div>
+		<div class="top-menu">
+			<div class="LogoText">
+				<span id="logo_text" style="padding: 10px;">HAProxy-WI</span>
+				<a href="#" id="hide_menu" title="Hide menu" style="margin-left: 24px;position: absolute;">
+					<span class="ui-state-default ui-corner-all">
+						<span class="ui-icon ui-icon-arrowthick-1-w" id="arrow"></span>
+					</span>
+				</a>
+			</div>	
+			<div id="top-link" class="top-link">
+				<nav id="menu">
+					<ul class="menu">
+						<li class="p_menu"><a href="index.py" title="Main page" class="stats">About</a>			
+						<!-- 	<ul class="v_menu">
+								<li><a href=/app/overview.py title="Server and service status" class="overview-link head-submenu">Overview</a></li>
+								<li><a href=/app/viewsttats.py title="Show stats" class="stats head-submenu">Stats</a></li>
+								<li><a href=/app/logs.py title="View logs" class="logs head-submenu"> Logs</a></li>	
+								<li><a href=/app/edit.py title="Runtime API" class="runtime head-submenu">Runtime API</a></li>
+								<li><a href=/app/metrics.py title="Metrics" class="metrics head-submenu">Metrics</a></li>
+							</ul> -->
+						</li>
+						<li class="p_menu">
+							<a title="Docs" class="add">Docs</a>			
+							 <ul class="v_menu">
+								<li><a href=/installation.py title="Installation" class="edit head-submenu">Installation</a> </li>
+								<li><a href=/settings.py title="Settings" class="add head-submenu" id="add1">Settings</a></li>
+								<li><a href=/updates.py title="Update" class="upload head-submenu" id="add2">Update</a></li>
+								<li><a href=/changelog.py title="What's new?" class="edit head-submenu" id="add3">Changelog</a></li> 
+							</ul> 
+						</li>
+						<li class="p_menu">
+							<a href="https://demo.haproxy-wi.org" title="Demo site" class="stats">Demo</a>							
+						</li>
+						<li class="p_menu">
+							<a href="donate.py" title="Actions with configs" class="overview-link">Donate</a>							
+						</li>	
+
+							<!-- <li class="p_menu">
+								<a title="Keepalived" class="ha">Keepalived</a>
+								<ul class="v_menu">
+									<li><a href=/app/ha.py title="Create HA cluster" class="keepalived head-submenu">HA</a></li>
+									<li><a href=/app/keepalivedconfig.py title="Edit keepalived config" class="edit head-submenu">Edit config</a></li>		
+								</ul>
+							</li> -->
+
+					</ul>
+				</nav>
+				<!-- <div class="copyright-menu">
+					<a href="https://www.patreon.com/haproxy_wi" title="Donate" target="_blank" style="color: #fff; margin-left: 30px; color: red;" class="patreon">  Donate</a>
+				</div> -->
+			</div>
+		</div>
+		<div id="cover"></div>
+		<div class="container">
+
+				<h2>
+					{{title}}
+					
+				</h2>
+			{% block content %}{% endblock %}
+		</div>			
+	</body>
+</html>

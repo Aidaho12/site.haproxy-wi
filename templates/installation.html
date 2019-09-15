@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	<h3>RPM</h3>
+	<br />
+	You may retrieve signed binary configuration files from link. It may be automatically installed by root thus: 
+	
+	<div class="code_div">
+		<pre>
+yum install https://repo.haproxy-wi.org/el7/haproxy-wi-release-7-1-0.noarch.rpm 
+		</pre>
+	</div>
+	And just:
+	<div class="code_div">
+		<pre>
+yum install haproxy-wi
+		</pre>
+	</div>
+	<h3>Script</h3>
+	<br />
+	<div class="code_div">
+		<pre>
+$ git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi
+$ cd /var/www/haproxy-wi
+$ chmod +x install.sh
+$ sudo ./install.sh
+		</pre>
+	</div>
+	<h3>Manual</h3>
+	<div class="code_div">
+		<pre>
+$ cd /var/www/
+$ git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi
+
+<b>For CentOS:</b>
+
+$ chown -R apache:apache haproxy-wi/
+
+<b>Or if use Debian/Ubuntu:</b>
+
+$ chown -R www-data:www-data haproxy-wi/
+
+<b>For all:</b>
+
+$ pip3 install -r haproxy-wi/requirements.txt 
+$ chmod +x haproxy-wi/app/*.py 
+$ sudo ln -s /usr/bin/python3.5 /usr/bin/python3
+		</pre>
+	</div>
+	<br />
+	And add Apache config:
+	<div class="code_div">
+		<pre>
+# vi /etc/httpd/conf.d/haproxy-wi.conf 
+&lt;VirtualHost *:443>
+	SSLEngine on
+	SSLCertificateFile /var/www/haproxy-wi/app/certs/haproxy-wi.crt
+	SSLCertificateKeyFile /var/www/haproxy-wi/app/certs/haproxy-wi.key
+
+	ServerName haproxy-wi
+	ErrorLog /var/log/httpd/haproxy-wi.error.log
+	CustomLog /var/log/httpd/haproxy-wi.access.log combined
+	TimeOut 600
+	LimitRequestLine 16380
+					
+	DocumentRoot /var/www/haproxy-wi
+	ScriptAlias /cgi-bin/ "/var/www/haproxy-wi/app/"
+
+	&lt;Directory /var/www/haproxy-wi/app>
+		Options +ExecCGI
+		AddHandler cgi-script .py
+		Order deny,allow
+		Allow from all
+	&lt;/Directory>
+					
+	&lt;Directory /var/www/haproxy-wi/app/certs>
+		Options +ExecCGI -Indexes +MultiViews
+		Order Deny,Allow
+		Deny from all
+		&lt;/Directory>
+				
+	&lt;Directory /var/www/haproxy-wi/keys>
+		Options +ExecCGI -Indexes +MultiViews
+		Order Deny,Allow
+		Deny from all
+	&lt;/Directory>
+
+	&lt;FilesMatch "\.cfg$">
+		Order Deny,Allow
+		Deny from all
+	&lt;/FilesMatch>
+				
+	&lt;FilesMatch "\.db$">
+		Order Deny,Allow
+		Deny from all
+		&lt;/FilesMatch>
+&lt;/VirtualHost>
+		</pre>
+	</div>
+	And create DB:
+	<div class="code_div">
+		<pre>
+$ cd /var/www/haproxy-wi/app
+$ ./create_db.py
+		</pre>
+	</div>
+	<h3>Docker</h3>
+	<div class="code_div">
+		<br />
+		docker service create --detach=false --name haproxy-wi --mount type=volume,src=haproxy-wi,dst=/var/www/haproxy-wi/app -p 8080:80 aidaho/haproxy-wi
+		<br />
+		<br />
+	</div>
+
+	or
+	<br />
+	<div class="code_div">
+		<br />
+		docker run -d --name haproxy-wi -v haproxy-wi:/var/www/haproxy-wi/app -p 8080:80 aidaho/haproxy-wi
+		<br />
+		<br />
+	</div>
+</div>
+{% endblock %}

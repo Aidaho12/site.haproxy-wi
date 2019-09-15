@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	<h3>Settings</h3>
+	<h4>Edit $HOME_HAPROXY-WI/app/haproxy-wi.cfg with your env</h4>
+	
+	For Runtime API, Metrics and Alerting enable state file and stat socket on HAproxt servers and need install socat on all haproxy servers, and configre HAProxy:
+	<div class="code_div">
+		<pre>
+global
+	stats socket *:1999 level admin 
+    stats socket /var/run/haproxy.sock mode 600 level admin
+    server-state-file /etc/haproxy/haproxy/haproxy.state
+
+defaults
+	load-server-state-from-file global
+
+listen stats 
+	stats admin if TRUE 
+		</pre>
+	</div>
+	
+	<h3>DB settings</h3>
+	<br />
+	Default Haproxy-WI uses Sqlite, if you want use MySQL enable in config, and create database:
+
+	<div class="code_div">
+		<ul>
+			<br />
+			<li>MariaDB [(none)]> create user 'haproxy-wi'@'%';</li>
+			<li>MariaDB [(none)]> create database haproxywi;</li>
+			<li>MariaDB [(none)]> grant all on haproxywi.* to 'haproxy-wi'@'%' IDENTIFIED BY 'haproxy-wi';</li>
+			<li>MariaDB [(none)]> grant all on haproxywi.* to 'haproxy-wi'@'localhost' IDENTIFIED BY 'haproxy-wi';</li>
+			<br />
+		</ul>
+	</div>
+</div>
+{% endblock %}
