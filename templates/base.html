@@ -31,28 +31,18 @@
 		<script src="/inc/js-cookie.js"></script>
 		<script src="/inc/script.js"></script>
 		<script src="/inc/nprogress.js"></script>
+<!-- 		<link rel="stylesheet" href="/inc/patternfly.css">
+		<link rel="stylesheet" href="/inc/patternfly-addons.css"> -->
+
 		<!-- <script src="/inc/vertical_scrol/custom_scrollbar.min.js"></script> -->
 		<meta name="description" content="Web interface(user-friendly web GUI, alerting, monitoring and secure) for managing Haproxy servers" />
 		<meta name="keywords" content="haproxy-servers web-interface management web-manager web-gui web interface gui frontend webui haproxy-configuration haproxy-status haproxy-gui haproxy-wi haproxy-managment high-availibility loadbalancer lbs waf" />
 		</description>
 	</head>
 	<body>
-		<a name="top"></a>
-		<div class="show_menu" style="display: none;">
-			<a href="#" id="show_menu" title="Show menu" style="margin-top: 30px;position: absolute;">
-				<span class="ui-state-default ui-corner-all">
-					<span class="ui-icon ui-icon-arrowthick-1-e" id="arrow"></span>
-				</span>
-			</a>
-		</div>
 		<div class="top-menu">
 			<div class="LogoText">
-				<span id="logo_text" style="padding: 10px;">HAProxy-WI</span>
-				<a href="#" id="hide_menu" title="Hide menu" style="margin-left: 24px;position: absolute;">
-					<span class="ui-state-default ui-corner-all">
-						<span class="ui-icon ui-icon-arrowthick-1-w" id="arrow"></span>
-					</span>
-				</a>
+				<span id="logo_text">HAproxy-WI</span>			
 			</div>	
 			<div id="top-link" class="top-link">
 				<nav id="menu">
@@ -105,6 +95,16 @@
 					
 				</h2>
 			{% block content %}{% endblock %}
+			
 		</div>			
+		<div class="footer">
+			<div class="footer-copyright">		
+			</div>
+			<div class="footer-div">
+				<a href="https://github.com/Aidaho12/haproxy-wi/issues" class="footer-link" target="_blank">Help</a>
+				<a href="https://github.com/Aidaho12" class="footer-link" target="_blank">Contact</a>
+				<a href="http://haproxy-wi.org" class="footer-link" target="_blank">About</a>
+			</div>
+		</div>
 	</body>
 </html>
