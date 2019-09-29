@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	
+	<h3>Docker</h3>
+	<div class="code_div">
+		<pre>
+ENVs
+
+MYSQL_ENABLE - the default is 0 ( disabled, use SQLITE ) turn on change to 1
+MYSQL_USER - the default is "haproxy-wi"
+MYSQL_PASS - the default is "haproxy-wi"
+MYSQL_DB - the default is "haproxywi"
+MYSQL_HOST - the default is 127.0.0.1
+		</pre>
+	</div>
+	<br />
+For MySQL support:
+<div class="code_div">
+		<pre>
+MariaDB [(none)]> create user 'haproxy-wi'@'%';
+MariaDB [(none)]> create database haproxywi;
+MariaDB [(none)]> grant all on haproxywi.* to 'haproxy-wi'@'%' IDENTIFIED BY 'haproxy-wi';
+MariaDB [(none)]> grant all on haproxywi.* to 'haproxy-wi'@'localhost' IDENTIFIED BY 'haproxy-wi';
+<br />
+</pre>
+	</div>
+<br />
+Docker
+<div class="code_div">
+		<br />
+docker service create --detach=false --name haproxy-wi -e MYSQL_ENABLE=1 -e MYSQL_USER="haproxy-wi" -e MYSQL_PASS="haproxy-wi" --mount type=volume,src=haproxy-wi,dst=/var/www/haproxy-wi/app -p 8080:80 aidaho/haproxy-wi
+<br />
+		<br />
+	</div>
+
+	or
+	<br />
+	<div class="code_div">
+		<br />
+
+docker run -d --name haproxy-wi -v haproxy-wi:/var/www/haproxy-wi/app -p 8080:80 aidaho/haproxy-wi
+<br />
+		<br />
+	</div>
+<br />
+Default Haproxy-WI use Sqlite, if you want use MySQL enable in env
+</div>
+{% endblock %}
