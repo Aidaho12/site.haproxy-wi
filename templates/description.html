@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	<h3>HAProxy-WI interface descriptions</h3>
+	<ol style="font-size: 15px; color: #aaa;">
+		<li><a href="description.py?description=servers" title="Add servers description">The "Adding servers" description</a></li>
+		<li><a href="description.py?description=creds" title="Add servers description">The "Credentials" description</a></li>
+		<li><a href="description.py?description=checker" title="Add servers description">The "Checker" description</a></li>
+		<li><a href="description.py?description=runtimeapi" title="Add servers description">The "Run Time API commands" descriptions</a></li>
+		<li><a href="description.py?description=logs" title="Add servers description">The "Internal logs" descriptions</a></li>
+	</ol>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}	
+
+	<table class="overview">
+		<tr class="overviewHead">
+			<td class="padding10 first-collumn">
+				Parameter:
+			</td>
+			<td>
+				Description:
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Name:
+			</td>
+			<td>
+				It's just name alias. This alias will be used in 'Servers' page for choose credentials
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				SSH key
+			</td>
+			<td>
+				If it is enabled, the key will be used, if turned off - the password. Do not forget to download the key to all servers or install the sudo without a password
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Group
+			</td>
+			<td>
+				You can set one of the exists group. Group = namespace. Members from one group cannot see servers from another
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Credentials
+			</td>
+			<td>
+				You can set username and password(if SSH key is disabled) for access by SSH
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Upload SSH Key
+			</td>
+			<td>
+				Choose exists credential name for uploading SSH key
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Key
+			</td>
+			<td>
+				Private key. Note: The public key must be pre-installed on all servers to which you plan to connect
+			</td>
+		</tr>
+	</table>
+	<div style="padding: 20px">
+		<img src="/inc/images/creds.png" alt="SSH credentials" class="printscreen" />
+	</div>
+{% endblock %}

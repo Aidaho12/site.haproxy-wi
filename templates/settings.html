@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}	
 <div style="padding-left: 20px">
-	<h3>Settings</h3>
+	
 	<h4>Edit $HOME_HAPROXY-WI/app/haproxy-wi.cfg with your env</h4>
 	
-	For Runtime API, Metrics and Alerting enable state file and stat socket on HAproxt servers and need install socat on all haproxy servers, and configre HAProxy:
+	For Runtime API, Metrics and Alerting enable state file and stat socket on HAProxy servers and need install socat on all haproxy servers, and configre HAProxy:
 	<div class="code_div">
 		<pre>
 global
@@ -22,8 +22,22 @@ listen stats
 	
 	<h3>DB settings</h3>
 	<br />
-	Default Haproxy-WI uses Sqlite, if you want use MySQL enable in config, and create database:
-
+	Default HAProxy-WI uses Sqlite, if you want use MySQL enable in config:
+	<div class="code_div">
+		<ul>
+			<br />
+			<li>[mysql]</li>
+			<li>#Enable MySQL DB. Default will be used Sqlite DB. Default disable</li>
+			<li>enable = 1</li>
+			<li>mysql_user = haproxywi</li>
+			<li>mysql_password = haproxy-wi</li>
+			<li>mysql_db = haproxywi</li>
+			<li>mysql_host = 127.0.0.1</li>
+			<br />
+		</ul>
+	</div>
+	<br />
+	And create database:
 	<div class="code_div">
 		<ul>
 			<br />

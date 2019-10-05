@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}	
+
+	<table class="overview">
+		<tr class="overviewHead">
+			<td class="padding10 first-collumn">
+				Parameter:
+			</td>
+			<td>
+				Description:
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Hostname
+			</td>
+			<td>
+				The server hostname. It will display at the all pages of HAProxy-WI
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				IP
+			</td>
+			<td>
+				The IP address of the server. It will use to connect by SSH
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				SSH
+			</td>
+			<td>
+				SSH port for connect. Default 22
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Group
+			</td>
+			<td>
+				You can set one of the exists group. Group = namespace. Members from one group cannot see servers from another
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Enable
+			</td>
+			<td>
+				If the servers are enabled they will shows at the all pages. You can uncheck the checkbox to temporarily hide the servers
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Virt
+			</td>
+			<td>
+				It is like IP address VRRP. You can add VRRP address for quick access to active server
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Alert
+			</td>
+			<td>
+				If alert is enabled you will receive messages on the telegram channels when of backends will changed they status
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Metrics
+			</td>
+			<td>
+				Enable this if you want to collect backends metrics
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Start
+			</td>
+			<td>
+				If the checkbox is enabled HAProxy-WI will try start HAProxy service if the service for some reason will down
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Slave for
+			</td>
+			<td>
+				If you use balancers cluster choose master server for slave and will be uploaded new configs and restart service at slave when changes will happened at the master
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Credentials
+			</td>
+			<td>
+				Choose exists credentials for SSH access
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Description
+			</td>
+			<td>
+				Just some description for better understanding
+			</td>
+		</tr>	
+	</table>
+	<div style="padding: 20px">
+		<img src="https://github.com/Aidaho12/haproxy-wi/raw/master/image/haproxy-wi-admin-area.png" alt="Servers" class="printscreen" />
+	</div>
+{% endblock %}

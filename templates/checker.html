@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}	
+
+	<table class="overview">
+		<tr class="overviewHead">
+			<td class="padding10 first-collumn">
+				Parameter:
+			</td>
+			<td>
+				Description:
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Token
+			</td>
+			<td>
+				Token that gave you @father_bot
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Channel name
+			</td>
+			<td>
+				Name of your channel 
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Group
+			</td>
+			<td>
+				You can set one of the exists group. Group = namespace. Members from one group cannot see servers from another
+			</td>
+		</tr>
+	</table>
+	<div style="padding: 20px">
+		<img src="/inc/images/checker.png" alt="Servers" class="printscreen" />
+	</div>
+{% endblock %}

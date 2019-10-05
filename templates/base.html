@@ -20,9 +20,9 @@
 			FontAwesomeConfig = { searchPseudoElements: true, observeMutations: false };
 		</script>
 		<script defer src="/inc/fa-solid.min.js"></script>
+		<script defer src="/inc/fa-brands.min.js"></script>
 		<script defer src="/inc/fontawesome.min.js"></script>
 		<link href="/inc/awesome.css" rel="stylesheet">
-		<!-- <link href="/inc/vertical_scrol/custom_scrollbar.css" rel="stylesheet"> -->
 		<link href="/inc/style.css" rel="stylesheet">
 		<link href="/inc/nprogress.css" rel="stylesheet">
 		<link rel="stylesheet" href="/inc/jquery-ui.css">
@@ -31,18 +31,18 @@
 		<script src="/inc/js-cookie.js"></script>
 		<script src="/inc/script.js"></script>
 		<script src="/inc/nprogress.js"></script>
-<!-- 		<link rel="stylesheet" href="/inc/patternfly.css">
-		<link rel="stylesheet" href="/inc/patternfly-addons.css"> -->
-
-		<!-- <script src="/inc/vertical_scrol/custom_scrollbar.min.js"></script> -->
 		<meta name="description" content="Web interface(user-friendly web GUI, alerting, monitoring and secure) for managing Haproxy servers" />
 		<meta name="keywords" content="haproxy-servers web-interface management web-manager web-gui web interface gui frontend webui haproxy-configuration haproxy-status haproxy-gui haproxy-wi haproxy-managment high-availibility loadbalancer lbs waf" />
-		</description>
+
 	</head>
 	<body>
 		<div class="top-menu">
 			<div class="LogoText">
-				<span id="logo_text">HAproxy-WI</span>			
+				<span id="logo_text">
+					<a href="https://haproxy-wi.org" title="HAProxy-WI site" target="_blank">
+						<img src="https://demo.haproxy-wi.org/inc/images/logo_menu.png" alt="logo" width="170" />
+					</a>
+				</span>			
 			</div>	
 			<div id="top-link" class="top-link">
 				<nav id="menu">
@@ -60,10 +60,11 @@
 							<a title="Docs" class="add">Docs</a>			
 							 <ul class="v_menu">
 								<li><a href=/installation.py title="Installation" class="edit head-submenu">Installation</a> </li>
-								<li><a href=/docker.py title="Docker" class="edit head-submenu">Docker</a> </li>
-								<li><a href=/settings.py title="Settings" class="add head-submenu" id="add1">Settings</a></li>
-								<li><a href=/updates.py title="Update" class="upload head-submenu" id="add2">Update</a></li>
-								<li><a href=/changelog.py title="What's new?" class="edit head-submenu" id="add3">Changelog</a></li> 
+								<li><a href=/docker.py title="Docker" class="docker head-submenu">Docker</a> </li>
+								<li><a href=/settings.py title="Settings" class="add head-submenu">Settings</a></li>
+								<li><a href=/description.py title="HAProxy-WI interface descriptions" class="lists head-submenu">Descriptions</a></li>
+								<li><a href=/updates.py title="Update" class="upload head-submenu">Update</a></li>
+								<li><a href=/changelog.py title="What's new?" class="edit head-submenu">Changelog</a></li> 
 							</ul> 
 						</li>
 						<li>
@@ -101,7 +102,13 @@
 		<div class="footer">
 			<div class="footer-copyright">		
 			</div>
+			<div id="logo_footer">
+				<a href="https://haproxy-wi.org" title="HAProxy-WI site">
+					<img src="/inc/images/logo_footer.png" alt="logo" id="logo_footer_img" />
+				</a>
+			</div>
 			<div class="footer-div">
+				<a href="https://github.com/Aidaho12/haproxy-wi/" class="footer-link" target="_blank">Github</a>
 				<a href="https://github.com/Aidaho12/haproxy-wi/issues" class="footer-link" target="_blank">Help</a>
 				<a href="https://github.com/Aidaho12" class="footer-link" target="_blank">Contact</a>
 				<a href="http://haproxy-wi.org" class="footer-link" target="_blank">About</a>
