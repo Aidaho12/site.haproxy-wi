@@ -19,7 +19,7 @@ if form.getvalue('last_ver'):
 	latest_file_rel = latest_file.split('-')[3]
 	version = latest_file_ver+'.'+latest_file_rel
 	version = (version[::-1].replace('.'[::-1],''[::-1], 1))[::-1]
-	#print('3.6.5.1')	
+	# print('3.6.5')	
 
 	print(version)										
 									
