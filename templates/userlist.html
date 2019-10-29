@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}	
+	<div style="padding-left: 20px">
+		<h3>
+		It is possible to control access to frontend/backend/listen sections or to
+		http stats by allowing only authenticated and authorized users. To do this,
+		it is required to create at least one userlist and to define users.
+		</h3>
+		<br />
+	</div>
+	<table class="overview">
+		<tr class="overviewHead">
+			<td class="padding10 first-collumn">
+				Parameter:
+			</td>
+			<td>
+				Description:
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Name:
+			</td>
+			<td>
+				Creates new userlist with name <listname>. Many independent userlists can be used to store authentication & authorization data for independent customers.
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Group:
+			</td>
+			<td>
+				Adds group <groupname> to the current userlist. It is also possible to attach users to this group by using a comma separated list of names proceeded by "users" keyword.
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				User:
+			</td>
+			<td>
+				Adds user <username> to the current userlist.
+			</td>
+		</tr>
+	</table>
+	
+	<div style="padding-left: 20px">
+		<h3>
+			How to use:
+		</h3>
+		<div class="code_div">
+			<pre>
+userlist basic-auth-list
+  group is-regular-user
+  group is-admin
+
+  user admin  insecure-password adminpassword	groups is-admin
+  user editor insecure-password editorpassword
+  user guest  insecure-password guestpassword	groups is-regular-user
+  
+backend web-draw-production
+  acl draw-auth http_auth(basic-auth-list)
+  http-request auth realm draw unless draw-auth
+  
+backend web-devops-production
+  acl devops-auth http_auth_group(basic-auth-list) is-admin
+  http-request auth realm devops unless devops-auth
+			</pre>
+		</div>
+	</div>
+{% endblock %}

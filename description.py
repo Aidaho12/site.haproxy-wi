@@ -29,6 +29,22 @@ elif form.getvalue('description') == 'logs':
 	template = env.get_template('logs.html')
 	template = template.render(h2 = 1,
 							title = 'The "Internal logs" descriptions')
+elif form.getvalue('description') == 'saved':
+	template = env.get_template('saved.html')
+	template = template.render(h2 = 1,
+							title = 'Pre saved options and servers')
+elif form.getvalue('description') == 'setup':
+	template = env.get_template('setup.html')
+	template = template.render(h2 = 1,
+							title = 'How to setup servers, group and SSH credentials')
+elif form.getvalue('description') == 'userlist':
+	template = env.get_template('userlist.html')
+	template = template.render(h2 = 1,
+							title = 'About userlists')
+elif form.getvalue('description') == 'api':
+	template = env.get_template('api.html')
+	template = template.render(h2 = 1,
+							title = 'About userlists')
 else:
 	template = env.get_template('description.html')
 	template = template.render(h2 = 1,
