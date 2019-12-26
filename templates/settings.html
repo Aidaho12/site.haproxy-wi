@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 {% block content %}	
 <div style="padding-left: 20px">
+	<ul class="link_list">
+		<li><a href="settings.py#haproxy_wi_config" title="HAProxy-WI config">HAProxy-WI config</a></li>
+		<li><a href="settings.py#haproxy_config" title="HAProxy config">HAProxy config</a></li>
+		<li><a href="settings.py#db_settings" title="DB settings">DB settings</a></li>
+	</ul>
+	<a name="haproxy_wi_config"></a>
+	<h3>HAProxy-WI config</h3>
+	<br/>
+	Edit $HOME_HAPROXY-WI/app/haproxy-wi.cfg with your env
 	
-	<h4>Edit $HOME_HAPROXY-WI/app/haproxy-wi.cfg with your env</h4>
-	
+	<a name="haproxy_config"></a>
+	<h3>HAProxy config</h3>
+	<br/>
 	For Runtime API, Metrics and Alerting enable state file and stat socket on HAProxy servers and need install socat on all haproxy servers, and configre HAProxy:
 	<div class="code_div">
 		<pre>
@@ -25,8 +35,10 @@ listen stats
 		</pre>
 	</div>
 	
+	<a name="db_settings"></a>
 	<h3>DB settings</h3>
-	<br />
+	<br/>
+
 	Default HAProxy-WI uses Sqlite, if you want use MySQL enable in config:
 	<div class="code_div">
 		<ul>

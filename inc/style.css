@@ -497,6 +497,9 @@ ul{
 .head-submenu {
 	margin-left: 20px;
 }
+.head-submenu2 {
+	margin-left: 0px;
+}
 @keyframes shadow {
 	from {box-shadow: 0px 0px 0px red inset;}
 	50% {text-shadow: 0 0 30px black;}
@@ -756,4 +759,14 @@ label {
 }
 .printscreen {
 	width: 99%;
+}
+.link_list {
+	list-style: disc;
+    line-height: 24px;
+    margin-bottom: 20px;
+	margin-top: 20px;
+}
+.link_list li {
+	list-style: disc;
+	margin-left: 24px;
 }
