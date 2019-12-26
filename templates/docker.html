@@ -27,9 +27,22 @@ MariaDB [(none)]> grant all on haproxywi.* to 'haproxy-wi'@'localhost' IDENTIFIE
 	</div>
 <br />
 Docker
+<br />
+First login to Haproxy-WI registry:
 <div class="code_div">
 		<br />
-docker service create --detach=false --name haproxy-wi -e MYSQL_ENABLE=1 -e MYSQL_USER="haproxy-wi" -e MYSQL_PASS="haproxy-wi" --mount type=volume,src=haproxy-wi,dst=/var/www/haproxy-wi/app -p 8080:80 aidaho/haproxy-wi
+$ docker login registry.haproxy-wi.org:5000
+<br />
+		<br />
+	</div>
+<br />
+<b>Before uses registry you should donate to support project on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a> 
+or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> and I will send you credentials for access. 
+Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want</b>
+	<br /><br />
+<div class="code_div">
+		<br />
+docker service create --detach=false --name haproxy-wi -e MYSQL_ENABLE=1 -e MYSQL_USER="haproxy-wi" -e MYSQL_PASS="haproxy-wi" --mount type=volume,src=haproxy-wi,dst=/var/www/haproxy-wi/app -p 443:443 registry.haproxy-wi.org:5000/haproxy-wi
 <br />
 		<br />
 	</div>
@@ -39,7 +52,7 @@ docker service create --detach=false --name haproxy-wi -e MYSQL_ENABLE=1 -e MYSQ
 	<div class="code_div">
 		<br />
 
-docker run -d --name haproxy-wi -v haproxy-wi:/var/www/haproxy-wi/app -p 8080:80 aidaho/haproxy-wi
+docker run -d --name haproxy-wi -v haproxy-wi:/var/www/haproxy-wi/app -p 443:443 registry.haproxy-wi.org:5000/haproxy-wi
 <br />
 		<br />
 	</div>

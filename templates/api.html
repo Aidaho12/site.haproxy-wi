@@ -25,15 +25,38 @@ curl -X POST \
 	<div class="code_div">
 		<pre>
 {
-    "help": {
-        "server/&lt;id,hostname,ip>/runtime": "exec HAProxy runtime commands by id or hostname or ip",
-        "server/&lt;id,hostname,ip>/backends':'show backends by id or hostname or ip",
-        "server/&lt;id,hostname,ip>/action/stop": "stop HAProxy service by id or hostname or ip",
-        "servers": "show info about all servers",
-        "server/&lt;id,hostname,ip>": "show info about server by id or hostname or ip",
-        "server/&lt;id,hostname,ip>/action/restart": "restart HAProxy service by id or hostname or ip",
-        "server/&lt;id,hostname,ip>/action/start": "start HAProxy service by id or hostname or ip",
-        "server/&lt;id,hostname,ip>/status": "show HAProxy status by id or hostname or ip"
+"help": {
+    "server/&lt;id,hostname,ip>/runtime": "exec HAProxy runtime commands 
+        by id or hostname or ip",
+    "server/&lt;id,hostname,ip>/backends':'show backends 
+        by id or hostname or ip",
+    "server/&lt;id,hostname,ip>/action/stop": "stop HAProxy service 
+        by id or hostname or ip",
+    "servers": "show info about all servers",
+    "server/&lt;id,hostname,ip>": "show info about server 
+        by id or hostname or ip",
+    "server/&lt;id,hostname,ip>/action/restart": "restart HAProxy service 
+        by id or hostname or ip",
+    "server/&lt;id,hostname,ip>/action/start": "start HAProxy service 
+        by id or hostname or ip",
+    "server/&lt;id,hostname,ip>/status": "show HAProxy status 
+        by id or hostname or ip",
+    'server/&lt;id,hostname,ip>/config/get':'get HAProxy config from 
+        the server by id or hostname or ip',
+    'server/&lt;id,hostname,ip>/config/send':'send HAProxy config 
+        to the server by id or hostname or ip. Has to have config header 
+        with config and action header for action after upload. 
+        Action header accepts next value: save, test, reload and restart. 
+        May be empty for just save',
+    'server/&lt;id,hostname,ip>/config/add':'add section to the HAProxy config 
+        by id or hostname or ip. Has to have config header with section 
+        and action header for action after upload. Action header accepts 
+        next value: save, test, reload and restart. May be empty for just save',
+    'server/&lt;id,hostname,ip>/log':'show HAProxy log by id or hostname or ip.
+        May to have config next headers: rows(format INT) default: 10 grep, 
+        waf(if needs WAF log) deault: 0, starthour(format: 24) default: 00, 
+        startminut, endhour(format: 24) default: 24, endminut'
+
     }
 }
 		</pre>
@@ -66,6 +89,50 @@ curl -X POST \
         "id": 1,
         "hostname": "test-server",
         "action": "stop"
+    }
+}
+		</pre>
+	</div>
+	<br />
+	How to upload a new config and after restart HAProxy service:
+	<div class="code_div">
+		<pre>
+curl -X POST \
+  https://demo.haproxy-wi.org/api/server/test-server/config/send \
+
+  -H 'cache-control: no-cache' \
+  -H 'login: admin' \
+  -H 'password: admin' \
+  -d 'global
+    log         127.0.0.1 local2
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    user        haproxy
+    group       haproxy
+    daemon
+    stats socket /var/lib/haproxy/stats
+    stats socket *:1999 level admin
+    stats socket /var/run/haproxy.sock mode 600 level admin
+    server-state-file /etc/haproxy/haproxy.state
+
+defaults
+    mode                    http
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except 127.0.0.0/8
+    option                  redispatch
+	...'
+		</pre>
+	</div>
+	Will give you: 
+	<div class="code_div">
+		<pre>
+{
+    "config": {
+        "test-server": "config was uploaded"
     }
 }
 		</pre>
