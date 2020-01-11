@@ -4,6 +4,7 @@
 	<ul class="link_list">
 		<li><a href="installation.py#rpm" title="RPM installation">RPM installation</a></li>
 		<li><a href="installation.py#manual" title="Manual installation">Manual installation</a></li>
+		<li><a href="installation.py#os" title="OS support">OS support</a></li>
 	</ul>
 	<a name="rpm"></a>
 	<h3><a href="installation.py#rpm" title="RPM installation">RPM</a></h3>	
@@ -12,21 +13,32 @@
 	
 	<div class="code_div">
 		<pre>
-yum install https://repo.haproxy-wi.org/haproxy-wi-release-7-1-0.noarch.rpm 
+$ sudo yum install https://repo.haproxy-wi.org/haproxy-wi-release-7-1-0.noarch.rpm 
 		</pre>
 	</div>
-	Supports EL7 and EL8.
-	<br />
+
+	Set up your credentials:
+		<div class="code_div">
+		<pre>
+$ sudo vi /etc/yum.repos.d/haproxy-wi.repo
+		</pre>
+	</div>
+	And add your credentials:
+			<div class="code_div">
+		<pre>
+baseurl = http://login:password@repo.haproxy-wi.org/el$releasever/
+		</pre>
+	</div>
 	<br />
 	Disable SELinux and just:
 	<div class="code_div">
 		<pre>
-yum install haproxy-wi
+$ sudo yum install haproxy-wi
 		</pre>
 	</div>
 <b>Before uses RPM repository you should donate to support project on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a> 
 or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> and I will send you credentials for access. 
-Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want</b>
+Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want. Please indicate the purpose of the donation, if any.</b>
 	<br /><br />
 	
 	<a name="manual"></a>
@@ -165,5 +177,14 @@ $ sudo mkdir /usr/share/httpd/.ssh
 $ sudo chown apache:apache /usr/share/httpd/.*
 		</pre>
 	</div>
+		<a name="os"></a>
+	<h3><a href="installation.py#os" title="RPM installation">OS support</a></h3>	
+	<br />
+	HAProxy-WI supports next os:
+	<ul class="link_list">
+		<li>EL7(RPM installation and manual installation)</li>
+		<li>EL8(RPM installation and manual installation)</li>
+		<li>Debian/Ubuntu(only manual installation)</li>
+	</ul>
 </div>
 {% endblock %}

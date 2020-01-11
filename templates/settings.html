@@ -7,12 +7,37 @@
 		<li><a href="settings.py#db_settings" title="DB settings">DB settings</a></li>
 	</ul>
 	<a name="haproxy_wi_config"></a>
-	<h3>HAProxy-WI config</h3>
+	<h3><a href="settings.py#haproxy_wi_config" title="HAProxy-WI config">HAProxy-WI config</a></h3>
 	<br/>
-	Edit $HOME_HAPROXY-WI/app/haproxy-wi.cfg with your env
+	Edit $HOME_HAPROXY-WI/app/haproxy-wi.cfg with your env. Default config:
+	<div class="code_div">
+		<pre>
+[main]
+#Path to files destination
+fullpath = /var/www/haproxy-wi
+cgi_path = ${fullpath}/app/
+log_path = ${fullpath}/log/
+cert_local_dir = ${cgi_path}/certs/
+
+[configs]
+#Dir where configs will be save
+haproxy_save_configs_dir = ${main:fullpath}/configs/hap_config/
+kp_save_configs_dir = ${main:fullpath}/configs/kp_config/
+
+[mysql]
+#Enable MySQL DB. Default will be used Sqlite DB. Default disable
+enable = 0
+mysql_user = haproxy-wi
+mysql_password = haproxywi
+mysql_db = haproxywi
+mysql_host = 127.0.0.1
+mysql_port = 3306
+
+		</pre>
+	</div>
 	
 	<a name="haproxy_config"></a>
-	<h3>HAProxy config</h3>
+	<h3><a href="settings.py#haproxy_config" title="HAProxy config">HAProxy config</a></h3>
 	<br/>
 	For Runtime API, Metrics and Alerting enable state file and stat socket on HAProxy servers and need install socat on all haproxy servers, and configre HAProxy:
 	<div class="code_div">
@@ -36,7 +61,7 @@ listen stats
 	</div>
 	
 	<a name="db_settings"></a>
-	<h3>DB settings</h3>
+	<h3><a href="settings.py#db_settings" title="DB settings">DB settings</a></h3>
 	<br/>
 
 	Default HAProxy-WI uses Sqlite, if you want use MySQL enable in config:

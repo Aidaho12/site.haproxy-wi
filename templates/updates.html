@@ -1,31 +1,56 @@
 {% extends "base.html" %}
 {% block content %}	
 <div style="padding-left: 20px">
-	
-	<h3>RPM</h3>
+	<ul class="link_list">
+		<li><a href="updates.py#yum" title="RPM installation">Update via yum</a></li>
+		<li><a href="updates.py#web" title="Manual installation">Update via HAProxy-WI</a></li>
+	</ul>
+	<a name="yum"></a>	
+	<h3><a href="updates.py#yum" title="Update via yum">YUM</a></h3>
 	<br />
 	If you use RPM package then just type:
 	<div class="code_div">
 		<pre>
-yum update haproxy-wi
+$ sudo yum update haproxy-wi
 		</pre>
 	</div>
-	If servers uses proxy to connection Internet add proxy settings in yum.conf:
+	If server uses proxy to connection Internet add proxy settings in yum.conf:
 	<div class="code_div">
 		<pre>
-vi /etc/yum.conf
+$ sudo vi /etc/yum.conf
 proxy=proto://ip:port
 		</pre>
 	</div>
-	Or use web interface for update
+	<a name="web"></a>	
+	<h3><a href="updates.py#web" title="Update via web">Update the HAProxy-WI via Web Interface</a></h3>
 	<br />
+	Before update via Web Interface you should add persmission for apache user for sudo:
+	<div class="code_div">
+		<pre>
+$ sudo visudo
+		</pre>
+	</div>
+	Adds persmission for apache user:
+		<div class="code_div">
+		<pre>
+apache          ALL=(ALL)       NOPASSWD: /usr/bin/yum
+		</pre>
+	</div>
+		If server uses proxy to connection Internet add proxy settings in yum.conf:
+	<div class="code_div">
+		<pre>
+$ sudo vi /etc/yum.conf
+proxy=proto://ip:port
+		</pre>
+	</div>
 	<br />
 	<b>Before uses RPM repository you should donate to support project on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a> 
 or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> and I will send you credentials for access. 
-Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want</b>
+Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want.
+Please indicate the purpose of the donation, if any.</b>
 	<br />
 	<br />
-	How to install RPM read in <a href="/installation.py#rpm" title="Installation">Installation</a> man
+	How to start use RPM read in <a href="/installation.py#rpm" title="Installation">Installation</a> man
 
 </div>
 {% endblock %}

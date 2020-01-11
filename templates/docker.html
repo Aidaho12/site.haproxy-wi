@@ -1,8 +1,55 @@
 {% extends "base.html" %}
 {% block content %}	
 <div style="padding-left: 20px">
-	
-	<h3>Docker</h3>
+
+	<ul class="link_list">
+		<li><a href="docker.py#docker" title="Getting Docker image and deploy">Getting Docker image</a></li>
+		<li><a href="docker.py#deploy" title="deploy">Deploy</a></li>
+		<li><a href="docker.py#db_settings" title="DB settings">DB settings</a></li>
+		<li><a href="docker.py#versions" title="DB settings">Versions</a></li>
+	</ul>
+	<a name="docker"></a>
+	<h3><a href="docker.py#docker" title="Getting Docker image and deploy">Getting Docker image and deploy</a></h3>
+	<br />
+First login to Haproxy-WI registry:
+<div class="code_div">
+		<br />
+$ docker login registry.haproxy-wi.org:5000
+<br />
+		<br />
+	</div>
+	<br />
+	<b>Before uses registry you should donate to support project on 
+	<a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a> 
+	or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> 
+	and I will send you credentials for access. 
+	Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. 
+	But you can donate as many as you can or as you want. Please indicate the purpose of the donation, if any.</b>
+	<br /><br />
+	<a name="deploy"></a>
+	<h3><a href="docker.py#deploy" title="deploy">Deploy</a></h3>
+	<br />
+<div class="code_div">
+		<br />
+docker service create --detach=false --name haproxy-wi -e MYSQL_ENABLE=1 -e MYSQL_USER="haproxy-wi" -e MYSQL_PASS="haproxy-wi" --mount type=volume,src=haproxy-wi,dst=/var/www/haproxy-wi/app -p 443:443 registry.haproxy-wi.org:5000/haproxy-wi
+<br />
+		<br />
+	</div>
+
+	or
+	<br />
+	<div class="code_div">
+		<br />
+
+docker run -d --name haproxy-wi -v haproxy-wi:/var/www/haproxy-wi/app -p 443:443 registry.haproxy-wi.org:5000/haproxy-wi
+<br />
+		<br />
+	</div>
+	<br/>
+	<a name="db_settings"></a>
+	<h3><a href="docker.py#db_settings" title="DB settings">DB settings</a></h3>
+	<br/>
+	Default Haproxy-WI use Sqlite, if you want use MySQL enable in env
 	<div class="code_div">
 		<pre>
 ENVs
@@ -25,38 +72,31 @@ MariaDB [(none)]> grant all on haproxywi.* to 'haproxy-wi'@'localhost' IDENTIFIE
 <br />
 </pre>
 	</div>
-<br />
-Docker
-<br />
-First login to Haproxy-WI registry:
-<div class="code_div">
-		<br />
-$ docker login registry.haproxy-wi.org:5000
-<br />
-		<br />
-	</div>
-<br />
-<b>Before uses registry you should donate to support project on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a> 
-or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> and I will send you credentials for access. 
-Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want</b>
-	<br /><br />
-<div class="code_div">
-		<br />
-docker service create --detach=false --name haproxy-wi -e MYSQL_ENABLE=1 -e MYSQL_USER="haproxy-wi" -e MYSQL_PASS="haproxy-wi" --mount type=volume,src=haproxy-wi,dst=/var/www/haproxy-wi/app -p 443:443 registry.haproxy-wi.org:5000/haproxy-wi
-<br />
-		<br />
-	</div>
 
-	or
+<br />
+<a name="versions"></a>
+	<h3><a href="docker.py#versions" title="Docker images versions">Docker images versions</a></h3>
 	<br />
-	<div class="code_div">
-		<br />
-
-docker run -d --name haproxy-wi -v haproxy-wi:/var/www/haproxy-wi/app -p 443:443 registry.haproxy-wi.org:5000/haproxy-wi
-<br />
-		<br />
+	Docker images use the same versions as RPM packages, for example:
+		<div class="code_div">
+		<pre>
+	
+name	"haproxy-wi"
+tags	
+0	"latest"
+1	"3.7.4"
+2	"3.8"
+3	"3"
+4	"3.8.1"
+5	"3.8.2"
+6	"3.9"
+7	"3.9.1"
+8	"3.9.2"
+9	"3.9.4"
+10	"3.10.0.0"
+11	"3.10.1.0"
+12	"3.11.0.0"
+		</pre>
 	</div>
-<br />
-Default Haproxy-WI use Sqlite, if you want use MySQL enable in env
 </div>
 {% endblock %}
