@@ -45,6 +45,14 @@ elif form.getvalue('description') == 'api':
 	template = env.get_template('api.html')
 	template = template.render(h2 = 1,
 							title = 'About userlists')
+elif form.getvalue('description') == 'backup':
+	template = env.get_template('backup.html')
+	template = template.render(h2 = 1,
+							title = 'Backup HAProxy`s configs')
+elif form.getvalue('description') == 'nginx_status':
+	template = env.get_template('nginx_status.html')
+	template = template.render(h2 = 1,
+							title = 'Nginx status page description')
 else:
 	template = env.get_template('description.html')
 	template = template.render(h2 = 1,

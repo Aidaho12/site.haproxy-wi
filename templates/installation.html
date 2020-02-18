@@ -3,7 +3,9 @@
 <div style="padding-left: 20px">
 	<ul class="link_list">
 		<li><a href="installation.py#rpm" title="RPM installation">RPM installation</a></li>
+		<li><a href="installation.py#why" title="RPM installation">Why should I use RPM?</a></li>
 		<li><a href="installation.py#manual" title="Manual installation">Manual installation</a></li>
+		<li><a href="installation.py#selinux" title="Installing SELinux policy">Installing SELinux policy</a></li>
 		<li><a href="installation.py#os" title="OS support">OS support</a></li>
 	</ul>
 	<a name="rpm"></a>
@@ -16,7 +18,7 @@
 $ sudo yum install https://repo.haproxy-wi.org/haproxy-wi-release-7-1-0.noarch.rpm 
 		</pre>
 	</div>
-
+	
 	Set up your credentials:
 		<div class="code_div">
 		<pre>
@@ -30,16 +32,27 @@ baseurl = http://login:password@repo.haproxy-wi.org/el$releasever/
 		</pre>
 	</div>
 	<br />
-	Disable SELinux and just:
+	Install extra repository:
 	<div class="code_div">
 		<pre>
-$ sudo yum install haproxy-wi
+$ sudo yum install https://repo.ius.io/ius-release-el7.rpm
 		</pre>
 	</div>
+
 <b>Before uses RPM repository you should donate to support project on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a> 
 or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> and I will send you credentials for access. 
 Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want. Please indicate the purpose of the donation, if any.</b>
 	<br /><br />
+	<a name="why"></a>
+	<h3><a href="installation.py#rpm" title="RPM installation">Why should I use RPM?</a></h3>	
+	<br />
+	Using RPM it is the best solution because:
+	<ul class="link_list">
+		<li>It is more convenient: just type one command for installation</li>
+		<li>Updating without any problems: update with a one command or click a one button in the Web Interface</li>
+		<li>More stable and less bugs: RPM releases after community tests</li>
+		<li>Use RPM you help project to grow and evolve</li>
+	</ul>
 	
 	<a name="manual"></a>
 	<h3><a href="installation.py#manual" title="Manual installation">Manual</a></h3>
@@ -53,6 +66,7 @@ python-devel python-jinja2 python35u-mod_wsgi ansible
 $ cd /var/www/
 $ git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi
 $ chown -R apache:apache haproxy-wi/
+$ sudo cp haproxy-wi/config_other/httpd/* /etc/httpd/conf.d/
 
 Or if use Debian/Ubuntu:
 
@@ -61,15 +75,16 @@ python3-pip g++ freetype2-demos libatlas-base-dev python3.5-mod_wsgi mod_ssl \
 openldap-dev libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev \
 libsasl2-dev libffi-dev python3-dev libssl-dev gcc ansible -y
 $ chown -R www-data:www-data haproxy-wi/
+$ sudo cp haproxy-wi/config_other/httpd/* /etc/httpd/available-sites/
 
 Both
 
 $ pip3 install -r haproxy-wi/requirements.txt 
 $ chmod +x haproxy-wi/app/*.py 
 $ sudo ln -s /usr/bin/python3.5 /usr/bin/python3
-$ sudo cp config_other/logrotate/* /etc/logrotate.d/
-$ sudo cp config_other/syslog/* /etc/rsyslog.d/
-$ sudo cp config_other/systemd/* /etc/systemd/system/
+$ sudo cp haproxy-wi/config_other/logrotate/* /etc/logrotate.d/
+$ sudo cp haproxy-wi/config_other/syslog/* /etc/rsyslog.d/
+$ sudo cp haproxy-wi/config_other/systemd/* /etc/systemd/system/
 $ sudo systemctl daemon-reload      
 $ sudo systemctl restart httpd
 $ sudo systemctl restart rsyslog
@@ -84,6 +99,7 @@ $ sudo mkdir /var/www/haproxy-wi/keys
 $ sudo mkdir /var/www/haproxy-wi/configs/
 $ sudo mkdir /var/www/haproxy-wi/configs/hap_config/
 $ sudo mkdir /var/www/haproxy-wi/configs/kp_config/
+$ sudo mkdir /var/www/haproxy-wi/configs/nginx_config/
 $ sudo mkdir /var/www/haproxy-wi/log/
 		</pre>
 	</div>
@@ -173,12 +189,40 @@ $ ./create_db.py
 	<div class="code_div">
 		<pre>
 $ sudo mkdir /usr/share/httpd/.ansible
+$ sudo touch /usr/share/httpd/.ansible_galaxy
 $ sudo mkdir /usr/share/httpd/.ssh
 $ sudo chown apache:apache /usr/share/httpd/.*
 		</pre>
 	</div>
+	Disable SELinux and enjoy!
+	<br />
+	<br />
+<a name="selinux"></a>
+	<h3><a href="installation.py#selinux" title="Installing SELinux policy">Installing SELinux policy</a></h3>	
+	<br />
+	If you use RPM you have not do anything. HAProxy-WI has to install SELinux policy, if this does not happen then install the package:
+	<div class="code_div">
+		<pre>
+$ sudo yum install haproxy-wi-selinux
+		</pre>
+	</div>
+	<!-- <br /> -->
+	<!-- For manual installation SELinux policy do next: -->
+	<!-- <div class="code_div"> -->
+		<!-- <pre> -->
+<!-- $ sudo install policycoreutils-python- -->
+<!-- # semanage boolean -m --on httpd_can_network_connect_db -->
+<!-- # semanage boolean -m --on httpd_enable_cgi -->
+
+<!-- # semanage fcontext -a -t httpd_unconfined_script_exec_t "/var/www/haproxy-wi/app(/.*)?" -->
+<!-- # restorecon -r /var/www/haproxy-wi/app/ -->
+		<!-- </pre> -->
+	<!-- </div> -->
+	
+	<!-- Or just disabled SELinux :) -->
+	<!-- <br /> -->
 		<a name="os"></a>
-	<h3><a href="installation.py#os" title="RPM installation">OS support</a></h3>	
+	<h3><a href="installation.py#os" title="OS support">OS support</a></h3>	
 	<br />
 	HAProxy-WI supports next os:
 	<ul class="link_list">

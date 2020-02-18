@@ -2,30 +2,35 @@
 {% block content %}	
 <div style="padding-left: 20px; width: 90%; word-wrap: break-word;">
 	<h1>Welcome!</h1>
-
-	<h4>HAProxy-WI is web interface(user-friendly web GUI, alerting, monitoring and secure) for managing Haproxy servers</h4>
-
-	<h3>What HAProxy-WI can:</h3>
-	<br />
+	
+	<h4>HAProxy-WI is web interface(user-friendly web GUI, alerting, monitoring and secure) for managing Haproxy, Nginx and Keepalived servers</h4>
+	<ul class="link_list">
+		<li><a href="/#about" title="About HAProxy-WI">About HAProxy-WI</a></li>
+		<li><a href="/#try" title="Want to try?">Want to try?</a></li>
+	</ul>
+	<a name="about"></a>
+	<h3><a href="/#about" title="About HAProxy-WI">What HAProxy-WI can:</a></h3>
+	
 	<ol>
-		<li>Configure HAproxy In a jiffy with HAProxy-WI</li>
+		<li>Installation and updating HAProxy, Nginx and Keepalived with HAProxy-WI</li>
+		<li>Configure HAProxy, Nginx and Keepalived In a jiffy with HAProxy-WI</li>
 		<li>View and analyse Status of all Frontend/backend server via HAProxy-WI from a single control panel</li>
 		<li>Enable/disable servers through stats page without rebooting HAProxy</li>
-		<li>View/Analyse HAproxy logs straight from the HAProxy-WI web interface</li>
-		<li>Create and visualise the HAproxy workflow from Web Ui</li>
-		<li>Push Your changes to your HAproxy servers with a single click through web interface</li>
-		<li>Get info on past changes, Evaluate your config files and restore a previous stable config anytime with a single click straight from Web interface</li>
+		<li>View/Analyse HAProxy, Nginx logs straight from the HAProxy-WI web interface</li>
+		<li>Create and visualise the HAProxy workflow from Web Ui</li>
+		<li>Push Your changes to your HAProxy, Nginx and Keepalived servers with a single click through web interface</li>
+		<li>Get info on past changes, evaluate your config files and restore a previous stable config anytime with a single click straight from Web interface</li>
 		<li>Add/Edit Frontend or backend servers via web interface with a click of a button</li>
-		<li>Edit config of HAproxy and push changes to All Master/Slave server with a single click</li>
+		<li>Edit config of HAProxy, Nginx and Keepalived and push changes to All Master/Slave server with a single click</li>
 		<li>Add Multiple server to ensure Config Sync between servers</li>
 		<li>Auto management of ports assigned to Fronted</li>
-		<li>Evaluate the changes of recent configs pushed to HAproxy instances straight from web ui</li>
+		<li>Evaluate the changes of recent configs pushed to HAProxy, Nginx and Keepalived instances straight from web ui</li>
 		<li>Multiple User Roles support for privileged based Viewing and editing of Config</li>
-		<li>Create Groups and add /remove servers to ensure proper identification for your HAproxy Clusters</li>
+		<li>Create Groups and add/remove servers to ensure proper identification for your HAProxy and Nginx Clusters</li>
 		<li>Send notifications to telegram directly from HAProxy-WI</li>
 		<li>HAProxy-WI supports high Availability to ensure uptime to all Master slave servers configured</li>
 		<li>SSL certificate support</li>
-		<li>SSH Key support for managing multiple HAproxy Servers straight from HAProxy-WI</li>
+		<li>SSH Key support for managing multiple HAProxy and Nginx Servers straight from HAProxy-WI</li>
 		<li>SYN flood protect</li>
 		<li>Alerting about changes backends state</li>
 		<li>Alerting about HAProxy service state</li>
@@ -34,12 +39,21 @@
 		<li>Web application firewall</li>
 		<li>LDAP support</li>
 		<li>Keep active HAProxy service</li>
-		<li>Ability to hide parts of the config with tags for users with "guest" role:  "HideBlockStart" and "HideBlockEnd"</li>
+		<li>Ability to hide parts of the config with tags for users with "guest" role: "HideBlockStart" and "HideBlockEnd"</li>
 		<li>Mobile-ready desing</li>
 		<li>REST API</li>
-		<li>Installation and Upgrading HAProxy service via HAProxy-WI</li>
-		<li>Backup HAProxy's config files through HAProxy-WI</li>
+		<li>Backup HAProxy's, Nginx's and Keepalived's config files through HAProxy-WI</li>
 	</ol>
+	<br />
+
+	<a name="try"></a>
+	<h3><a href="/#try" title="Want to try?">Want to try</a></h3>
+	<br />
+	If you want to try RPM and/or Docker image before just <a href="contacts.py" title="Contacts">contact</a> me and I will provide you credentials for a week!
+	<br />
+	<br />
+	<br />
 	<iframe width="860" height="515" src="https://www.youtube.com/embed/xyyLP9YhH_4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<br /><br /><br /><br />
 </div>
 {% endblock %}

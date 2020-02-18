@@ -20,7 +20,7 @@ if form.getvalue('last_ver'):
 	version = latest_file_ver+'.'+latest_file_rel
 	version = version.split('el')[0]
 	version = (version[::-1].replace('.'[::-1],''[::-1], 1))[::-1]
-	# print('3.10.1')	
+	# print('4.1.0.0')	
 	# version = '3.9.6'
 	# template = template.render(version=version)
 	# print(template)	
