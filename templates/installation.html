@@ -31,11 +31,24 @@ $ sudo vi /etc/yum.repos.d/haproxy-wi.repo
 baseurl = http://login:password@repo.haproxy-wi.org/el$releasever/
 		</pre>
 	</div>
-	<br />
+
 	Install extra repository:
 	<div class="code_div">
 		<pre>
+$ sudo yum install epel-release
+		</pre>
+	</div>
+	If you use CentOS 7 also install next:
+	<div class="code_div">
+		<pre>
 $ sudo yum install https://repo.ius.io/ius-release-el7.rpm
+		</pre>
+	</div>
+
+	And install HAProxy-WI:
+	<div class="code_div">
+		<pre>
+$ sudo yum install haproxy-wi
 		</pre>
 	</div>
 
@@ -58,13 +71,14 @@ Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overvie
 	<h3><a href="installation.py#manual" title="Manual installation">Manual</a></h3>
 	<div class="code_div">
 		<pre>
+$ cd /var/www/
+$ git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi		
+		
 CentOS:
 
 $ sudo yum -y install git nmap-ncat net-tools python35u dos2unix python35u-pip \
 httpd python35u-devel gcc-c++ openldap-devel mod_ssl \
 python-devel python-jinja2 python35u-mod_wsgi ansible
-$ cd /var/www/
-$ git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi
 $ chown -R apache:apache haproxy-wi/
 $ sudo cp haproxy-wi/config_other/httpd/* /etc/httpd/conf.d/
 
@@ -185,7 +199,7 @@ $ ./create_db.py
 		</pre>
 	</div>
 	<br />
-	If you are going to use installation HAProxy or/and Keepalived vi HAProxy-WI you should do next:
+	 If you use RPM you have not to do anything. HAProxy-WI has to install SELinux policy, if this does not happen then install the package: 
 	<div class="code_div">
 		<pre>
 $ sudo mkdir /usr/share/httpd/.ansible
@@ -228,7 +242,7 @@ $ sudo yum install haproxy-wi-selinux
 	<ul class="link_list">
 		<li>EL7(RPM installation and manual installation)</li>
 		<li>EL8(RPM installation and manual installation)</li>
-		<li>Debian/Ubuntu(only manual installation)</li>
+		<li>Other Unix(only manual installation)</li>
 	</ul>
 </div>
 {% endblock %}

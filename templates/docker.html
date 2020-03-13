@@ -3,15 +3,15 @@
 <div style="padding-left: 20px">
 
 	<ul class="link_list">
-		<li><a href="docker.py#docker" title="Getting Docker image and deploy">Getting Docker image</a></li>
+		<li><a href="docker.py#docker" title="Getting the Docker image and deploy">Getting the Docker image</a></li>
 		<li><a href="docker.py#deploy" title="deploy">Deploy</a></li>
 		<li><a href="docker.py#db_settings" title="DB settings">DB settings</a></li>
 		<li><a href="docker.py#versions" title="DB settings">Versions</a></li>
 	</ul>
 	<a name="docker"></a>
-	<h3><a href="docker.py#docker" title="Getting Docker image and deploy">Getting Docker image and deploy</a></h3>
+	<h3><a href="docker.py#docker" title="Getting Docker image and deploy">Getting the Docker image and deploy</a></h3>
 	<br />
-First login to Haproxy-WI registry:
+First login to the Haproxy-WI registry:
 <div class="code_div">
 		<br />
 $ docker login registry.haproxy-wi.org:5000
@@ -49,7 +49,7 @@ docker run -d --name haproxy-wi -v haproxy-wi:/var/www/haproxy-wi/app -p 443:443
 	<a name="db_settings"></a>
 	<h3><a href="docker.py#db_settings" title="DB settings">DB settings</a></h3>
 	<br/>
-	Default Haproxy-WI use Sqlite, if you want use MySQL enable in env
+	Default the Haproxy-WI uses the Sqlite, if you want to use the MySQL enable it in the env
 	<div class="code_div">
 		<pre>
 ENVs
@@ -62,7 +62,7 @@ MYSQL_HOST - the default is 127.0.0.1
 		</pre>
 	</div>
 	<br />
-For MySQL support:
+For the MySQL supports:
 <div class="code_div">
 		<pre>
 MariaDB [(none)]> create user 'haproxy-wi'@'%';
@@ -75,9 +75,9 @@ MariaDB [(none)]> grant all on haproxywi.* to 'haproxy-wi'@'localhost' IDENTIFIE
 
 <br />
 <a name="versions"></a>
-	<h3><a href="docker.py#versions" title="Docker images versions">Docker images versions</a></h3>
+	<h3><a href="docker.py#versions" title="Docker images versions">The Docker images versions</a></h3>
 	<br />
-	Docker images use the same versions as RPM packages, for example:
+	The Docker images uses the same versions as the RPM packages, for example:
 		<div class="code_div">
 		<pre>
 	
