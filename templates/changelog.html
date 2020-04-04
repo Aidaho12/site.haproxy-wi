@@ -5,13 +5,36 @@
 <h1>Good news everyone</h1>
 
 <div class="changelog">
+	<a name="4_2_2"></a>
+	<h3><a href="changelog.py#4_2_2" title="v4.2.2">v4.2.2 (02.05.2020)</a></h3>
+	<ol>
+		<li>Was improved the "Overview" page: added Grafana and Prometheus servers status</li>
+		<li>Ports for the exporters will open by default with installation</li>
+	</ol>
+</div>
+
+<div class="changelog">
+	<a name="4_2_1"></a>
+	<h3><a href="changelog.py#4_2_1" title="v4.2.1">v4.2.1 (17.04.2020)</a></h3>
+	<ol>
+		<li>Was fixed bug with non ascii characters</li>
+		<li>Was fixed bug with WAF service</li>
+		<li>Was fixed bug with SELinux on EL8</li>
+		<li>Was fixed bug with installation Keepalived</li>
+	</ol>
+</div>
+
+<div class="changelog">
 	<a name="4_2"></a>
-	<h3><a href="changelog.py#4_2" title="v4.2.0">v4.2.0 (01.04.2020)</a></h3>
+	<h3><a href="changelog.py#4_2" title="v4.2.0">v4.2.0 (03.04.2020)</a></h3>
 	<ol>
 		<li>Ability to install Grafana with pre-installed HAProxy and Nginx dashboards</li>
 		<li>Ability to install Prometheus server</li>
 		<li>Ability to install HAProxy exporter</li>
 		<li>Ability to install Nginx exporter</li>
+		<li>Was imporoved the "Show config"</li>
+		<li>Pretty config shows for Nginx like HAProxy config shows</li>
+		<li>Stats port for Nginx opens in firewalld by default with installation</li>
 	</ol>
 </div>
 
@@ -24,6 +47,9 @@
 		<li>Now the SSL certificate is generated dynamically during installation via RPM. This provides more security</li>
 		<li>Was fixed bug with shows "check connection" status on the "Servers" page</li>
 		<li>Was fixed bug with Firewalld</li>
+		<li>Sets SELinux permissive mode by default with installation HAProxy, Nginx and Keepalived now</li>
+		<li>Ability to install a new version of HAProxy (2.0.13)</li>
+		<li>Was fixed bug about dots in hostnames</li>
 	</ol>
 </div>
 

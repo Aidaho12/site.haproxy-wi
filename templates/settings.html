@@ -4,6 +4,7 @@
 	<ul class="link_list">
 		<li><a href="settings.py#haproxy_wi_config" title="HAProxy-WI config">HAProxy-WI config</a></li>
 		<li><a href="settings.py#haproxy_config" title="HAProxy config">HAProxy config</a></li>
+		<li><a href="settings.py#nginx_config" title="Nginx config">Nginx config</a></li>
 		<li><a href="settings.py#db_settings" title="DB settings">DB settings</a></li>
 	</ul>
 	<a name="haproxy_wi_config"></a>
@@ -21,6 +22,7 @@ log_path = ${fullpath}/log/
 #Dir where configs will be save
 haproxy_save_configs_dir = ${main:fullpath}/configs/hap_config/
 kp_save_configs_dir = ${main:fullpath}/configs/kp_config/
+nginx_save_configs_dir = ${main:fullpath}/configs/nginx_config/
 
 [mysql]
 #Enable MySQL DB. Default will be used Sqlite DB. Default disable
@@ -37,7 +39,7 @@ mysql_port = 3306
 	<a name="haproxy_config"></a>
 	<h3><a href="settings.py#haproxy_config" title="HAProxy config">HAProxy config</a></h3>
 	<br/>
-	For Runtime API, Metrics and Alerting enable state file and stat socket on the HAProxy servers and needs install socat to the all haproxy servers, and configre the HAProxy:
+	If you use installed HAProxy without HAProxy-WI then for Runtime API, Metrics and Alerting enable state file and stat socket on the HAProxy servers and needs install socat to the all haproxy servers, and configre the HAProxy:
 	<div class="code_div">
 		<pre>
 global
@@ -58,6 +60,26 @@ listen stats
 		</pre>
 	</div>
 	
+	<a name="nginx_config"></a>
+	<h3><a href="settings.py#nginx_config" title="Nginx config">Nginx config</a></h3>
+	<br/>
+	If you use installed Nginx without HAProxy-WI then for view stats you should add the next configuration to all your Nginx servers:
+	<div class="code_div">
+		<pre>
+server {
+    listen       8086 ;
+    server_name  localhost;
+
+    location /stats {
+        stub_status;
+        auth_basic           "Resticted Area";
+        auth_basic_user_file /etc/nginx/status_page_passwdfile;
+    }
+}
+
+		</pre>
+	</div>
+	And generate login/password with htpasswd into /etc/nginx/status_page_passwdfile
 	<a name="db_settings"></a>
 	<h3><a href="settings.py#db_settings" title="DB settings">DB settings</a></h3>
 	<br/>

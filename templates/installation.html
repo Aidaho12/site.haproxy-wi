@@ -56,6 +56,9 @@ $ sudo yum install haproxy-wi
 or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> and I will send you credentials for access. 
 Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want. Please indicate the purpose of the donation, if any.</b>
 	<br /><br />
+	Do you <a href="https://haproxy-wi.org/#try" title="Try">want to try free</a>? No problem, just 
+	<a href="https://haproxy-wi.org/contacts.py" title="Contacts">write!</a>
+	<br /><br />
 	<a name="why"></a>
 	<h3><a href="installation.py#rpm" title="RPM installation">Why should I use RPM?</a></h3>	
 	<br />
@@ -74,24 +77,32 @@ Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overvie
 $ cd /var/www/
 $ git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi		
 		
-CentOS:
+<b>CentOS 7:</b>
 
 $ sudo yum -y install git nmap-ncat net-tools python35u dos2unix python35u-pip \
 httpd python35u-devel gcc-c++ openldap-devel mod_ssl \
-python-devel python-jinja2 python35u-mod_wsgi ansible
+python-devel python-jinja2 python35u-mod_wsgi rsync ansible
+
+<b>CentOS 8:</b>
+
+$ sudo yum -y install python36 python3-pip python36-devel dos2unix httpd mod_ssl python3-mod_wsgi \
+nmap-ncat net-tools lshw python3-ldap rsync ansible
+
+<b>Both CentOS:</b>
+
 $ chown -R apache:apache haproxy-wi/
 $ sudo cp haproxy-wi/config_other/httpd/* /etc/httpd/conf.d/
 
-Or if use Debian/Ubuntu:
+<b>Or if use Debian/Ubuntu:</b>
 
 $ sudo apt-get install git  net-tools lshw dos2unix apache2 netcat python3.5 \
 python3-pip g++ freetype2-demos libatlas-base-dev python3.5-mod_wsgi mod_ssl \
 openldap-dev libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev \
-libsasl2-dev libffi-dev python3-dev libssl-dev gcc ansible -y
+libsasl2-dev libffi-dev python3-dev libssl-dev gcc rsync ansible -y
 $ chown -R www-data:www-data haproxy-wi/
 $ sudo cp haproxy-wi/config_other/httpd/* /etc/httpd/available-sites/
 
-Both
+<b>Both</b>
 
 $ pip3 install -r haproxy-wi/requirements.txt 
 $ chmod +x haproxy-wi/app/*.py 
@@ -122,16 +133,20 @@ $ sudo mkdir /var/www/haproxy-wi/log/
 	<div class="code_div">
 		<pre>
 # vi /etc/httpd/conf.d/haproxy-wi.conf 
-&lt;VirtualHost *:443>
-	WSGIDaemonProcess api user=apache group=apache processes=1 threads=5
-    WSGIScriptAlias /api /var/www/haproxy-wi/api/app.wsgi
 
-    &lt;Directory /var/www/haproxy-wi/api>
-        WSGIProcessGroup api
-        WSGIApplicationGroup %{GLOBAL}
-        Order deny,allow
+&lt;VirtualHost *:443>
+	AddDefaultCharset UTF-8
+	SetEnv PYTHONIOENCODING utf8
+
+	WSGIDaemonProcess api user=apache group=apache processes=1 threads=5
+	WSGIScriptAlias /api /var/www/haproxy-wi/api/app.wsgi
+
+	&lt;Directory /var/www/haproxy-wi/api>
+		WSGIProcessGroup api
+		WSGIApplicationGroup %{GLOBAL}
+		Order deny,allow
 		Allow from all
-    &lt;/Directory>
+	&lt;/Directory>
 		
 	SSLEngine on
 	SSLCertificateFile /var/www/haproxy-wi/app/certs/haproxy-wi.crt

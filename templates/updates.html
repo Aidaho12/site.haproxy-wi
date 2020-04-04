@@ -14,7 +14,7 @@
 $ sudo yum update haproxy-wi
 		</pre>
 	</div>
-	If server uses proxy to connection Internet add proxy settings in yum.conf:
+	If the server uses proxy to connection to the Internet add proxy settings in yum.conf:
 	<div class="code_div">
 		<pre>
 $ sudo vi /etc/yum.conf
@@ -22,21 +22,21 @@ proxy=proto://ip:port
 		</pre>
 	</div>
 	<a name="web"></a>	
-	<h3><a href="updates.py#web" title="Update via web">Update the HAProxy-WI via Web Interface</a></h3>
+	<h3><a href="updates.py#web" title="Update via web">Update the HAProxy-WI via the Web Interface</a></h3>
 	<br />
-	Before update via Web Interface you should add persmission for apache user for sudo:
+	Before update via Web Interface you should add persmission for the apache user for sudo:
 	<div class="code_div">
 		<pre>
 $ sudo visudo
 		</pre>
 	</div>
-	Adds persmission for apache user:
+	Adds persmission for the apache user:
 		<div class="code_div">
 		<pre>
 apache          ALL=(ALL)       NOPASSWD: /usr/bin/yum
 		</pre>
 	</div>
-		If server uses proxy to connection Internet add proxy settings in yum.conf:
+		If the server uses proxy to connection Internet add proxy settings in yum.conf:
 	<div class="code_div">
 		<pre>
 $ sudo vi /etc/yum.conf
