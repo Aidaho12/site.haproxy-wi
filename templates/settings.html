@@ -6,6 +6,7 @@
 		<li><a href="settings.py#haproxy_config" title="HAProxy config">HAProxy config</a></li>
 		<li><a href="settings.py#nginx_config" title="Nginx config">Nginx config</a></li>
 		<li><a href="settings.py#db_settings" title="DB settings">DB settings</a></li>
+		<li><a href="settings.py#apache" title="Apache settings">Apache settings</a></li>
 	</ul>
 	<a name="haproxy_wi_config"></a>
 	<h3><a href="settings.py#haproxy_wi_config" title="HAProxy-WI config">HAProxy-WI config</a></h3>
@@ -109,6 +110,47 @@ server {
 			<li>MariaDB [(none)]> grant all on haproxywi.* to 'haproxy-wi'@'localhost' IDENTIFIED BY 'haproxy-wi';</li>
 			<br />
 		</ul>
+	</div>
+	<a name="apache"></a>
+	<h3><a href="settings.py#apache" title="Apache settings">Apache settings</a></h3>
+	<br/>
+	If you want to use your own Domain name you should edit haproxy-wi.conf for Apache:
+	<div class="code_div">
+		<pre>
+$ sudo vi /etc/httpd/conf.d/haproxy-wi.conf
+		</pre>
+	</div>
+	Edit the next string, replace "haprox-wi.example.com" on your own:
+	<div class="code_div">
+		<pre>
+&lt;VirtualHost my_domain.local:443>
+    ...
+    ServerName my_domain.local
+    ...
+&lt;/VirtualHost>
+		</pre>
+	</div>
+	And if you want to have redirect from the port 80 to the port 443, you should add next:
+	<div class="code_div">
+		<pre>
+&lt;VirtualHost demo.haproxy-wi.org:80>
+        ServerName demo.haproxy-wi.org
+        Redirect permanent / https://demo.haproxy-wi.org
+
+&lt;/VirtualHost>
+		</pre>
+	</div>
+	In order to change the certificates you should edit:
+		<div class="code_div">
+		<pre>
+&lt;VirtualHost my_domain.local:443>
+    ...
+    SSLEngine on
+    SSLCertificateFile /var/www/haproxy-wi/app/certs/haproxy-wi.crt
+    SSLCertificateKeyFile /var/www/haproxy-wi/app/certs/haproxy-wi.key
+    ...
+&lt;/VirtualHost>
+		</pre>
 	</div>
 </div>
 {% endblock %}

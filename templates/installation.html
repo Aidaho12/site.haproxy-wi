@@ -5,6 +5,7 @@
 		<li><a href="installation.py#rpm" title="RPM installation">RPM installation</a></li>
 		<li><a href="installation.py#why" title="RPM installation">Why should I use RPM?</a></li>
 		<li><a href="installation.py#manual" title="Manual installation">Manual installation</a></li>
+		<li><a href="installation.py#ansible" title="Ansible installation">Ansible installation</a></li>
 		<li><a href="installation.py#selinux" title="Installing SELinux policy">Installing SELinux policy</a></li>
 		<li><a href="installation.py#os" title="OS support">OS support</a></li>
 	</ul>
@@ -68,6 +69,7 @@ Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overvie
 		<li>Updating without any problems: update with a one command or click a one button in the Web Interface</li>
 		<li>More stable and less bugs: RPM releases after community tests</li>
 		<li>Use RPM you help project to grow and evolve</li>
+		<li>It is safer: you do not need disable SELinux and firewall</li>
 	</ul>
 	
 	<a name="manual"></a>
@@ -214,13 +216,25 @@ $ ./create_db.py
 		</pre>
 	</div>
 	<br />
-	 If you use RPM you have not to do anything. HAProxy-WI has to install SELinux policy, if this does not happen then install the package: 
+<a name="ansible"></a>
+	<h3><a href="installation.py#ansible" title="Ansible install">Ansible install</a></h3>	
+	<br />
+	 If you use RPM you have not to do anything. HAProxy-WI will install and configure Ansible properly. For manual installation you should do next: 
 	<div class="code_div">
 		<pre>
 $ sudo mkdir /usr/share/httpd/.ansible
 $ sudo touch /usr/share/httpd/.ansible_galaxy
 $ sudo mkdir /usr/share/httpd/.ssh
 $ sudo chown apache:apache /usr/share/httpd/.*
+$ sudo echo "apache          ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
+
+<b>Or if use Debian/Ubuntu:</b>
+
+$ sudo mkdir /usr/share/apache2/.ansible
+$ sudo touch /usr/share/apache2/.ansible_galaxy
+$ sudo mkdir /usr/share/apache2/.ssh
+$ sudo chown apache:apache /usr/share/httpd/.*
+$ sudo echo "www-data          ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
 		</pre>
 	</div>
 	Disable SELinux and enjoy!
@@ -229,7 +243,7 @@ $ sudo chown apache:apache /usr/share/httpd/.*
 <a name="selinux"></a>
 	<h3><a href="installation.py#selinux" title="Installing SELinux policy">Installing SELinux policy</a></h3>	
 	<br />
-	If you use RPM you have not do anything. HAProxy-WI has to install SELinux policy, if this does not happen then install the package:
+	If you use RPM you have not do anything. HAProxy-WI will install SELinux policy, if this does not happen then install the package:
 	<div class="code_div">
 		<pre>
 $ sudo yum install haproxy-wi-selinux

@@ -5,22 +5,65 @@
 <h1>Good news everyone</h1>
 
 <div class="changelog">
+	<a name="4_3_1"></a>
+	<h3><a href="changelog.py#4_3_1" title="v4.3.1">v4.3.1 (15.06.2020)</a></h3>
+	<ol>
+		<li>Sorting servers: it will give ability to sort on you own for displaing on the "Metrics", "Overview", etc pages</li>
+		<li>Ability dynamically change "maxconn" for Frontends, Listens and Global</li>
+		<li>Ability dynamically change backend IP and port</li>
+	</ol>
+</div>
+
+<div class="changelog">
+	<a name="4_3"></a>
+	<h3><a href="changelog.py#4_3" title="v4.3.0">v4.3.0 (01.06.2020)</a></h3>
+	<ol>
+		<li>Page for manage internal HAProxy-WI tools: start/stop/disable/enable tools: Metrics master, Alerts Master, Auto start, Fail2ban, Grafana and Prometheus</li>
+		<li>Fail2ban implemented. This will provide more protection against brute force attacks for SSH, Apache and HAProxy-WI if your server is on the Internet</li>
+		<li>Was added reload function for HAProxy and Nginx on the "Overview" pages</li>
+		<li>Was added sorting for the Internal logs</li>
+		<li>Was fixed bug with permissions in the Internal logs</li>
+	</ol>
+</div>
+
+<div class="changelog">
+	<a name="4_2_3"></a>
+	<h3><a href="changelog.py#4_2_3" title="v4.2.3">v4.2.3 (10.05.2020)</a></h3>
+	<ol>
+		<li>The "Nginx Overview" page</li>
+		<li>Was added opening ports for Nginx virtual hosts</li>
+		<li>Was fixed SSH check connection</li>
+		<li>Was fixed Metrics worker bug</li>
+		<li>Ports for Grafana and Prometheus servers will be opened by default with installation</li>
+		<li>Was improved the "Overview" page: there are more statuses for workers</li>
+	</ol>
+</div>
+
+
+<div class="changelog">
 	<a name="4_2_2"></a>
-	<h3><a href="changelog.py#4_2_2" title="v4.2.2">v4.2.2 (02.05.2020)</a></h3>
+	<h3><a href="changelog.py#4_2_2" title="v4.2.2">v4.2.2 (22.04.2020)</a></h3>
 	<ol>
 		<li>Was improved the "Overview" page: added Grafana and Prometheus servers status</li>
 		<li>Ports for the exporters will open by default with installation</li>
+		<li>HAProxy-WI configure remote rsyslog for HAProxy logs</li>
+		<li>A few small bugs in Keepalived installation</li>
+		<li>Was fixed bug with Lists upload</li>
+		<li>Was fixed a few small with Telegram</li>
+		<li>Was added ability to reload HAProxy service in Lists upload</li>
 	</ol>
 </div>
 
 <div class="changelog">
 	<a name="4_2_1"></a>
-	<h3><a href="changelog.py#4_2_1" title="v4.2.1">v4.2.1 (17.04.2020)</a></h3>
+	<h3><a href="changelog.py#4_2_1" title="v4.2.1">v4.2.1 (06.04.2020)</a></h3>
 	<ol>
 		<li>Was fixed bug with non ascii characters</li>
 		<li>Was fixed bug with WAF service</li>
 		<li>Was fixed bug with SELinux on EL8</li>
 		<li>Was fixed bug with installation Keepalived</li>
+		<li>Was fixed bug with Auto restart tool</li>
+		<li>A new edit style for the "Admin" and "Servers" page for prevent browser autofill</li>
 	</ol>
 </div>
 
