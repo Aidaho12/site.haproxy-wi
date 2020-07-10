@@ -133,9 +133,9 @@ $ sudo vi /etc/httpd/conf.d/haproxy-wi.conf
 	And if you want to have redirect from the port 80 to the port 443, you should add next:
 	<div class="code_div">
 		<pre>
-&lt;VirtualHost demo.haproxy-wi.org:80>
-        ServerName demo.haproxy-wi.org
-        Redirect permanent / https://demo.haproxy-wi.org
+&lt;VirtualHost my_domain.local:80>
+        ServerName my_domain.local
+        Redirect permanent / https://my_domain.local
 
 &lt;/VirtualHost>
 		</pre>

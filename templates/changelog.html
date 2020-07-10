@@ -5,12 +5,68 @@
 <h1>Good news everyone</h1>
 
 <div class="changelog">
+	<a name="4_4_2"></a>
+	<h3><a href="changelog.py#4_4_2" title="v4.4.2">v4.4.2 (02.09.2020)</a></h3>
+	<ol>
+		<li>Was added ability enable/disable WAF rules</li>
+		<li>Was added "Antibot" option on the "Add" page</li>
+	</ol>
+</div>
+
+<div class="changelog">
+	<a name="4_4_1"></a>
+	<h3><a href="changelog.py#4_4_1" title="v4.4.1">v4.4.1 (15.08.2020)</a></h3>
+	<ol>
+		<li>Was added ability to edit black and white lists without restarting HAProxy service</li>
+		<li>Was improved the "HAProxy server overview": were added Bytes in and Bytes out</li>
+		<li>Was improved the "HAProxy server overview": were added current number of sessions and cumulative number of sessions processed so far</li>
+	</ol>
+</div>
+
+<div class="changelog">
+	<a name="4_4"></a>
+	<h3><a href="changelog.py#4_4" title="v4.4">v4.4.0 (02.08.2020)</a></h3>
+	<ol>
+		<li>REST API is deprecated and will be deleted</li>
+		<li>Was improved the "Bread crumbs"</li>
+		<li>Integration with <a href="https://github.com/Aidaho12/smon" title="Simple port monitoring" target="_blank">SMON</a></li>
+	</ol>
+</div>
+
+<div class="changelog">
+	<a name="4_3_3"></a>
+	<h3><a href="changelog.py#4_3_3" title="v4.3.3">v4.3.3 (15.07.2020)</a></h3>
+	<ol>
+		<li>Nice and convenient sticky-tables output</li>
+		<li>Nice and convenient interface for managing sticky-tables</li>
+		<li>Was fixed a small bug with Runtime API interface</li>
+		<li>Was fixed a small bug with Auto-refresh interface</li>
+		<li>Was fixed a small bug with Admin Area interface</li>
+		<li>Was fixed a small bug with Logs interface</li>
+		<li>Was fixed bug with Waf metrics</li>
+	</ol>
+</div>
+
+<div class="changelog">
+	<a name="4_3_2"></a>
+	<h3><a href="changelog.py#4_3_2" title="v4.3.2">v4.3.2 (01.07.2020)</a></h3>
+	<ol>
+		<li>Was added ability to use regex in log filter</li>
+		<li>Was added ability to exclude line by regex in log filter</li>
+		<li>Was added highlighting the search phrase</li>
+		<li>Support for LDAPS</li>
+		<li>Was improved the "Config" page: was added code editor for config editing</li>
+	</ol>
+</div>
+
+<div class="changelog">
 	<a name="4_3_1"></a>
 	<h3><a href="changelog.py#4_3_1" title="v4.3.1">v4.3.1 (15.06.2020)</a></h3>
 	<ol>
 		<li>Sorting servers: it will give ability to sort on you own for displaing on the "Metrics", "Overview", etc pages</li>
 		<li>Ability dynamically change "maxconn" for Frontends, Listens and Global</li>
 		<li>Ability dynamically change backend IP and port</li>
+		<li>The "Installation" page was splitted into two pages</li>
 	</ol>
 </div>
 
@@ -23,6 +79,11 @@
 		<li>Was added reload function for HAProxy and Nginx on the "Overview" pages</li>
 		<li>Was added sorting for the Internal logs</li>
 		<li>Was fixed bug with permissions in the Internal logs</li>
+		<li>Was added the ability to assign multiple groups to a user</li>
+		<li>Was added the ability to switch between groups on any page</li>
+		<li>Was imporoved the "Overview" pages: a nice pie graphs insetead text in the "Server status"</li>
+		<li>Ability to install a new version of HAProxy (2.0.14)</li>
+		<li>Was fixed bug with MySQL and metrics</li>
 	</ol>
 </div>
 
@@ -36,6 +97,10 @@
 		<li>Was fixed Metrics worker bug</li>
 		<li>Ports for Grafana and Prometheus servers will be opened by default with installation</li>
 		<li>Was improved the "Overview" page: there are more statuses for workers</li>
+		<li>Was added ability to uploaded Black/White lists to separate servers</li>
+		<li>Was added mirror for HAProxy RPMs for to be on the safe side</li>
+		<li>A new Python! Installation will be much faster, and easier manage packages. How to update read 
+		<a href="https://haproxy-wi.org/updates.py#4.2.2" title="Updating from 4.2.2 and earlier to later versions">here</a></li>
 	</ol>
 </div>
 

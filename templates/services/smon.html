@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding-left: 20px">
+    <h4>Simple monitoring TCP ports with alerting via Telegram and WEB pannel</h4>
+    <ul style="font-size: 15px; color: #aaa;" class="link_list">
+        <li><a href="services.py?service=smon#features" title="Features">Features</a></li>
+        <li><a href="services.py?service=smon#portcheck" title="Port check">Port check</a></li>
+        <li><a href="services.py?service=smon#http" title="HTTP status check">HTTP status check</a></li>
+        <li><a href="services.py?service=smon#body" title="BODY answer check">BODY answer check</a></li>
+    </ul>
+    <a name="features"></a>
+    <h3><a href="services.py?service=smon#features" title="Features">Features:</a></h3>
+    <br />
+    <ul>
+        <li>Availability TCP ports</li>
+        <li>Checking HTTP status</li>
+        <li>Checking BODY answer</li>
+        <li>Sending alert via Telegram</li>
+        <li>Showing response time</li>
+        <li>Showing Uptime and Downtime</li>
+    </ul>
+    <br />
+    <a name="portcheck"></a>
+    <h3><a href="services.py?service=smon#portcheck" title="Port check">Port check</a></h3>
+    <br />
+    Port check means: SMON sends tcp request to certain port if port is not available then alert will raise.
+    <br />
+    If you want to use only the "port check" left empty other options
+    <br /><br />
+    <a name="http"></a>
+    <h3><a href="services.py?service=smon#http" title="HTTP status check">HTTP status check</a></h3>
+    <br />
+    HTTP status check means: SMON sends http/https request to certain port, address and URI if answer is not 200 then
+    alert will raise. The "URI" means: address after Domain name, for instance: "/" or "/index.html" or "/info".
+    <br />
+    If you want to use only the "HTTP status check" left empty Body option
+    <br />
+    HTTP status also includes port checking
+    <br /><br />
+    <a name="http"></a>
+    <h3><a href="services.py?service=smon#body" title="BODY answer check">BODY answer check</a></h3>
+    <br />
+    BODY answer check means: SMON sends http/https request to certain port, address and URI if answer do not consits
+    properly phrase that was set for searching in the body answer then alert will raise.
+    <br />
+    BODY answer check also includes HTTP status and port checking
+</div>
+{% endblock %}

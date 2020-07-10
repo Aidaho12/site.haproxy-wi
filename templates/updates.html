@@ -4,6 +4,7 @@
 	<ul class="link_list">
 		<li><a href="updates.py#yum" title="RPM installation">Update via yum</a></li>
 		<li><a href="updates.py#web" title="Manual installation">Update via HAProxy-WI</a></li>
+		<li><a href="updates.py#4.2.2" title="Updating from 4.2.2 and earlier to later versions">Updating from 4.2.2 and earlier to later versions</a></li>
 	</ul>
 	<a name="yum"></a>	
 	<h3><a href="updates.py#yum" title="Update via yum">YUM</a></h3>
@@ -21,6 +22,7 @@ $ sudo vi /etc/yum.conf
 proxy=proto://ip:port
 		</pre>
 	</div>
+	<br />
 	<a name="web"></a>	
 	<h3><a href="updates.py#web" title="Update via web">Update the HAProxy-WI via the Web Interface</a></h3>
 	<br />
@@ -51,6 +53,22 @@ Please indicate the purpose of the donation, if any.</b>
 	<br />
 	<br />
 	How to start use RPM read in <a href="/installation.py#rpm" title="Installation">Installation</a> man
-
+	<br /><br />
+	<a name="4.2.2"></a>	
+	<h3><a href="updates.py#2.4.2" title="Updating from 4.2.2 and earlier to later versions">Updating from 4.2.2 and earlier to later versions</a></h3>
+	<br />
+	Becouse of a new version of Python there is conflict between two packages: The newer package python36-mod_wsgi conflicts with the oldier python35u-mod_wsgi.
+. 	For updating to version 4.2.3 you should delete the old package before update:
+<div class="code_div">
+		<pre>
+$ sudo rpm -e python35u-mod_wsgi --nodeps
+		</pre>
+	</div>
+	After deleting you can run updating via HAProxy-WI or manually: 
+	<div class="code_div">
+		<pre>
+$ sudo yum update haproxy-wi
+		</pre>
+	</div>
 </div>
 {% endblock %}

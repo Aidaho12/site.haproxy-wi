@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	 <ul class="link_list">
+                <li><a href="services.py?service=fail2ban#fail2ban" title="Fail2ban">Fail2ban</a></li>
+                <li><a href="services.py?service=fail2ban#functionality" title="Fail2bam Functionality">Fail2bam Functionality</a></li>
+                <li><a href="services.py?service=fail2ban#haproxywi" title="Fail2ban with HAProxy-WI">Fail2ban with HAProxy-WI</a></li>
+        </ul>
+        <a name="fail2ban"></a>
+        <h3><a href="services.py?service=fail2ban#fail2ban" title="Fail2ban">Fail2ban</a></h3>
+        <br />
+	Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. Written in the Python programming language, it is able to run on POSIX systems 
+	that have an interface to a packet-control system or firewall installed locally, for example, iptables or TCP Wrapper.
+	<br />
+	<br />
+	<a name="functionality"></a>
+	<h3><a href="services.py?service=fail2ban#functionality" title="Fail2bam Functionality">Fail2bam Functionality</a></h3>
+	<br />
+	Fail2Ban operates by monitoring log files (i.e. /var/log/secure.log, /var/www/haproxy-wi/log/haproxy-wi.log, etc.) for selected entries and running scripts based on them. 
+	Most commonly this is used to block selected IP addresses that may belong to hosts that are trying to breach the system's security. 
+	It can ban any host IP address that makes too many login attempts or performs any other unwanted action within a time frame defined by the administrator. 
+	Includes support for both IPv4 and IPv6. Optionally longer bans can be custom-configure for "recidivist" abusers that keep coming back. 
+	Fail2Ban is typically set up to unban a blocked host within a certain period, so as to not "lock out" any genuine connections that may have been temporarily misconfigured. 
+	However, an unban time of several minutes is usually enough to stop a network connection being flooded by malicious connections, as well as reducing the likelihood of a successful dictionary attack.
+	<br />
+	<br />
+	<a name="haproxywi"></a>
+	<h3><a href="services.py?service=fail2ban#haproxywi" title="Fail2ban with HAProxy-WI">Fail2ban with HAProxy-WI</a></h3>
+	<br />
+	HAProxy-WI started work with Fail2ban since v4.3.0. Fail2ban protects by default: SSH, HAProxy-WI and Apache against differents brute-force attacks.
+	<br /><br />
+	Fail2ban is disable by default. If you would like to start protect your server you should enable it in the "Admin Area" on the "Services" page.
+</div>
+{% endblock %}

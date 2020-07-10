@@ -7,6 +7,7 @@
 		<li><a href="installation.py#manual" title="Manual installation">Manual installation</a></li>
 		<li><a href="installation.py#ansible" title="Ansible installation">Ansible installation</a></li>
 		<li><a href="installation.py#selinux" title="Installing SELinux policy">Installing SELinux policy</a></li>
+		<li><a href="installation.py#fail2ban" title="Installing Fail2ban">Installing Fail2ban</a></li>
 		<li><a href="installation.py#os" title="OS support">OS support</a></li>
 	</ul>
 	<a name="rpm"></a>
@@ -17,6 +18,10 @@
 	<div class="code_div">
 		<pre>
 $ sudo yum install https://repo.haproxy-wi.org/haproxy-wi-release-7-1-0.noarch.rpm 
+
+or
+
+$ sudo yum install https://repo1.haproxy-wi.org/haproxy-wi-release-7-1-0.noarch.rpm 
 		</pre>
 	</div>
 	
@@ -49,16 +54,18 @@ $ sudo yum install https://repo.ius.io/ius-release-el7.rpm
 	And install HAProxy-WI:
 	<div class="code_div">
 		<pre>
-$ sudo yum install haproxy-wi
+$ sudo yum install haproxy-wi haproxy-wi-selinux
 		</pre>
 	</div>
-
+	<h4>Open in your broweser: https://your_ip/ Default login/password are: admin/admin</h4>
 <b>Before uses RPM repository you should donate to support project on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a> 
 or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> and I will send you credentials for access. 
 Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want. Please indicate the purpose of the donation, if any.</b>
 	<br /><br />
 	Do you <a href="https://haproxy-wi.org/#try" title="Try">want to try free</a>? No problem, just 
-	<a href="https://haproxy-wi.org/contacts.py" title="Contacts">write!</a>
+	<a hrer="#" title="Get trial period" id="redis" onclick="redis()" style="cursor: pointer"> fill the form</a> or <a href="https://haproxy-wi.org/contacts.py" title="Contacts">write</a> to us
+	and you will get access for a week!
+
 	<br /><br />
 	<a name="why"></a>
 	<h3><a href="installation.py#rpm" title="RPM installation">Why should I use RPM?</a></h3>	
@@ -81,34 +88,39 @@ $ git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi
 		
 <b>CentOS 7:</b>
 
-$ sudo yum -y install git nmap-ncat net-tools python35u dos2unix python35u-pip \
-httpd python35u-devel gcc-c++ openldap-devel mod_ssl \
-python-devel python-jinja2 python35u-mod_wsgi rsync ansible
+$ sudo yum install https://repo.ius.io/ius-release-el7.rpm
+$ sudo yum -y install git nmap-ncat net-tools dos2unix python3 python3-pip  \
+python36-ldap3 python36-pytz python36-requests  python36-future \
+python36-jinja2 python36-bottle python-configparser python36-mod_wsgi \
+httpd mod_ssl rsync ansible
+$ pip3 install -r haproxy-wi/config_other/requirements_el7.txt
 
 <b>CentOS 8:</b>
 
 $ sudo yum -y install python36 python3-pip python36-devel dos2unix httpd mod_ssl python3-mod_wsgi \
 nmap-ncat net-tools lshw python3-ldap rsync ansible
+$ pip3 install -r haproxy-wi/config_other/requirements_el8.txt
 
 <b>Both CentOS:</b>
 
-$ chown -R apache:apache haproxy-wi/
 $ sudo cp haproxy-wi/config_other/httpd/* /etc/httpd/conf.d/
 
-<b>Or if use Debian/Ubuntu:</b>
+<b>Or if you use Debian/Ubuntu:</b>
 
-$ sudo apt-get install git  net-tools lshw dos2unix apache2 netcat python3.5 \
-python3-pip g++ freetype2-demos libatlas-base-dev python3.5-mod_wsgi mod_ssl \
-openldap-dev libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev \
-libsasl2-dev libffi-dev python3-dev libssl-dev gcc rsync ansible -y
+$ sudo apt-get install git net-tools lshw dos2unix apache2 libapache2-mod-wsgi-py3 \
+python3-pip g++ freetype2-demos libatlas-base-dev apache2-ssl-dev netcat python3 \
+python3-ldap libpq-dev python-dev libpython-dev libxml2-dev libxslt1-dev libldap2-dev \
+libsasl2-dev libffi-dev python3-dev libssl-dev gcc rsync ansible  -y
 $ chown -R www-data:www-data haproxy-wi/
 $ sudo cp haproxy-wi/config_other/httpd/* /etc/httpd/available-sites/
+$ sudo a2ensite haproxy-wi.conf
+$ sudo a2enmod cgid
+$ sudo a2enmod ssl
+$ pip3 install -r haproxy-wi/requirements.txt
 
 <b>Both</b>
 
-$ pip3 install -r haproxy-wi/requirements.txt 
 $ chmod +x haproxy-wi/app/*.py 
-$ sudo ln -s /usr/bin/python3.5 /usr/bin/python3
 $ sudo cp haproxy-wi/config_other/logrotate/* /etc/logrotate.d/
 $ sudo cp haproxy-wi/config_other/syslog/* /etc/rsyslog.d/
 $ sudo cp haproxy-wi/config_other/systemd/* /etc/systemd/system/
@@ -128,86 +140,14 @@ $ sudo mkdir /var/www/haproxy-wi/configs/hap_config/
 $ sudo mkdir /var/www/haproxy-wi/configs/kp_config/
 $ sudo mkdir /var/www/haproxy-wi/configs/nginx_config/
 $ sudo mkdir /var/www/haproxy-wi/log/
+$ chown -R apache:apache /var/www/haproxy-wi/
+
+<b>If you use Debian/Ubuntu:</b>
+
+Change httpd to apache2 PATH and apache to www-data user in the all configs
 		</pre>
 	</div>
 	<br />
-	And add Apache config:
-	<div class="code_div">
-		<pre>
-# vi /etc/httpd/conf.d/haproxy-wi.conf 
-
-&lt;VirtualHost *:443>
-	AddDefaultCharset UTF-8
-	SetEnv PYTHONIOENCODING utf8
-
-	WSGIDaemonProcess api user=apache group=apache processes=1 threads=5
-	WSGIScriptAlias /api /var/www/haproxy-wi/api/app.wsgi
-
-	&lt;Directory /var/www/haproxy-wi/api>
-		WSGIProcessGroup api
-		WSGIApplicationGroup %{GLOBAL}
-		Order deny,allow
-		Allow from all
-	&lt;/Directory>
-		
-	SSLEngine on
-	SSLCertificateFile /var/www/haproxy-wi/app/certs/haproxy-wi.crt
-	SSLCertificateKeyFile /var/www/haproxy-wi/app/certs/haproxy-wi.key
-
-	ServerName haproxy-wi
-	ErrorLog /var/log/httpd/haproxy-wi.error.log
-	CustomLog /var/log/httpd/haproxy-wi.access.log combined
-	TimeOut 600
-	LimitRequestLine 16380
-					
-	DocumentRoot /var/www/haproxy-wi
-	ScriptAlias /cgi-bin/ "/var/www/haproxy-wi/app/"
-
-	&lt;Directory /var/www/haproxy-wi/app>
-		DirectoryIndex overview.py
-		Options +ExecCGI
-		AddHandler cgi-script .py
-		Order deny,allow
-		Allow from all
-	&lt;/Directory>
-					
-	&lt;Directory /var/www/haproxy-wi/app/certs>
-		Options +ExecCGI -Indexes +MultiViews
-		Order Deny,Allow
-		Deny from all
-		&lt;/Directory>
-				
-	&lt;Directory /var/www/haproxy-wi/keys>
-		Options +ExecCGI -Indexes +MultiViews
-		Order Deny,Allow
-		Deny from all
-	&lt;/Directory>
-
-	&lt;FilesMatch "\.cfg$">
-		Order Deny,Allow
-		Deny from all
-	&lt;/FilesMatch>
-				
-	&lt;FilesMatch "\.db$">
-		Order Deny,Allow
-		Deny from all
-		&lt;/FilesMatch>
-		
-	&lt;IfModule mod_headers.c>
-		Header set X-XSS-Protection: 1;
-		Header set X-Frame-Options: deny
-		Header set X-Content-Type-Options: nosniff
-		Header set Strict-Transport-Security: max-age=3600;
-		Header set Cache-Control no-cache
-		Header set Expires: 0
-
-		&lt;filesMatch ".(ico|css|js|gif|jpeg|jpg|png|svg|woff|ttf|eot)$">
-			Header set Cache-Control "max-age=86400, public"
-		&lt;/filesMatch>
-	&lt;/IfModule>	
-&lt;/VirtualHost>
-		</pre>
-	</div>
 	And create DB:
 	<div class="code_div">
 		<pre>
@@ -215,7 +155,8 @@ $ cd /var/www/haproxy-wi/app
 $ ./create_db.py
 		</pre>
 	</div>
-	<br />
+	Disable SELinux and enjoy!
+	<h4>Open in your broweser: https://your_ip/ Default login/password are: admin/admin</h4>
 <a name="ansible"></a>
 	<h3><a href="installation.py#ansible" title="Ansible install">Ansible install</a></h3>	
 	<br />
@@ -263,7 +204,35 @@ $ sudo yum install haproxy-wi-selinux
 	<!-- </div> -->
 	
 	<!-- Or just disabled SELinux :) -->
-	<!-- <br /> -->
+	<br />
+	<a name="fail2ban"></a>
+	<h3><a href="installation.py#fail2ban" title="Installing fail2ban policy">Installing Fail2ban</a></h3>	
+	<br />
+	If you use RPM you have not do anything. HAProxy-WI will install Fail2ban. For manual installation you should do next:
+	<div class="code_div">
+		<pre>
+<b>For EL:</b>
+$ sudo yum install fail2ban
+
+<b>For Debian/Ubuntu:</b>
+$ sudo apt-get install fail2ban
+		</pre>
+	</div>
+	After installation you should copy config files:
+	<div class="code_div">
+		<pre>
+$ sudo cp /var/www/haproxy-wi/config_other/fail2ban/filter.d/* /etc/fail2ban/filter.d/
+$ sudo cp /var/www/haproxy-wi/config_other/fail2ban/jail.d/* /etc/fail2ban/jail.d/
+		</pre>
+	</div>	
+	Enable and start the services:
+	<div class="code_div">
+		<pre>
+$ sudo systemctl start fail2ban
+$ sudo systemctl enable fail2ban
+		</pre>
+	</div>	
+	<br />
 		<a name="os"></a>
 	<h3><a href="installation.py#os" title="OS support">OS support</a></h3>	
 	<br />

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}	
+	<table class="overview">
+		<tr class="overviewHead">
+			<td class="padding10 first-collumn">
+				Parameter:
+			</td>
+			<td>
+				Description:
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Server:
+			</td>
+			<td>
+				Server whose configs will backup
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				 Remote server
+			</td>
+			<td>
+				Server for save configs
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Remote folder
+			</td>
+			<td>
+				Folder on the remote server where configs will backup
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				 Backup type
+			</td>
+			<td>
+				"Backup" means that all configs for all time will be saved. "Synchronization" means: if you will delete some configs on HAProxy-WI, it will be deleted from backup			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				Period time
+			</td>
+			<td>
+				How often to run a backup
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Credentials
+			</td>
+			<td>
+				Credentials for connect to backup server. Accepts credentials only with SSH key
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Description
+			</td>
+			<td>
+				Description
+			</td>
+		</tr>
+	</table>
+	<div style="padding: 20px">
+		<iframe width="760" height="515" src="https://www.youtube.com/embed/zWi8wJz10L0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+{% endblock %}

@@ -9,6 +9,7 @@ template = env.get_template('cloud.html')
 print('Content-type: text/html\n')
 
 template = template.render(h2 = 1,
-							title = "HAProxy-WI Cloud")
+							title = "HAProxy-WI Cloud",
+							description = "About HAProxy-WI Cloud")
 print(template)												
 									

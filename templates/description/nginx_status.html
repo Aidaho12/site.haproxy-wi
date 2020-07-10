@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}	
+	<table class="overview">
+		<tr class="overviewHead">
+			<td class="padding10 first-collumn">
+				Parameter:
+			</td>
+			<td>
+				Description:
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Active connections
+			</td>
+			<td>
+				The current number of active client connections including Waiting connections
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				accepts
+			</td>
+			<td>
+				The total number of accepted client connections
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				handled
+			</td>
+			<td>
+				The total number of handled connections. Generally, the parameter value is the same as accepts unless some resource limits have been reached (for example, the worker_connections limit)
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				requests
+			</td>
+			<td>
+				The total number of client requests
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Reading
+			</td>
+			<td>
+				The current number of connections where nginx is reading the request header
+			</td>
+		</tr><tr class="even">
+			<td class="padding10 first-collumn">
+				Writing
+			</td>
+			<td>
+				The current number of connections where nginx is writing the response back to the client
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				Waiting
+			</td>
+			<td>
+				The current number of idle client connections waiting for a request
+			</td>
+		</tr>
+	</table>
+	<div style="padding: 20px">
+		<img src="/inc/images/nginx_status_page.png" alt="Servers" class="printscreen" />
+	</div>
+{% endblock %}

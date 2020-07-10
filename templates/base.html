@@ -5,9 +5,16 @@
 		<script>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
+			gtag('js', new Date());
 
-		  gtag('config', 'UA-147648038-1');
+			gtag('config', 'UA-147648038-1');</script>
+			<!-- Global site tag (gtag.js) - Google Ads: 782862302 -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=AW-782862302">
+			<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'AW-782862302');
 		</script>
 
 		<title>{{title}} - {{description}} - HAproxy-WI</title>
@@ -80,6 +87,7 @@
 								<li><a href=/installation.py title="Installation" class="edit head-submenu">Installation</a> </li>
 								<li><a href=/docker.py title="Docker" class="docker head-submenu">Docker</a> </li>
 								<li><a href=/settings.py title="Settings" class="settings head-submenu">Settings</a></li>
+								<li><a href=/services.py title="HAProxy-WI's services" class="runtime head-submenu">Services</a></li>
 								<li><a href=/description.py title="HAProxy-WI interface descriptions" class="lists head-submenu">Descriptions</a></li>
 								<li><a href=/updates.py title="Update" class="upload head-submenu">Update</a></li>
 								<li><a href=/changelog.py title="What's new?" class="edit head-submenu">Changelog</a></li> 
@@ -95,6 +103,9 @@
 						<li>
 							<a href="contacts.py" title="Actions with configs" class="contacts">Contacts</a>							
 						</li>	
+						<li>
+							<a href="cabinet.py" title="Personal cabinet" class="cabinet">Cabinet</a>							
+						</li>
 							<!-- <li class="p_menu">
 								<a title="Keepalived" class="ha">Keepalived</a>
 								<ul class="v_menu">
@@ -134,6 +145,38 @@
 				<a href="https://github.com/Aidaho12" class="footer-link" target="_blank">Contact</a>
 				<a href="http://haproxy-wi.org" class="footer-link" target="_blank">About</a>
 			</div>
+		</div>
+		<div id="regis-table" style="display: none;">
+			<table class="overview">
+				<tr>
+					<td class="padding10 first-collumn" style="width: 40%;">
+						Login (without "@"):
+					</td>
+					<td>
+						<input type="text" id="Triallogin" name="login" required class="form-control"  />
+					</td>
+				</tr>
+				<tr>
+					<td class="padding10 first-collumn">
+						E-mail:
+					</td>
+					<td>
+						<input type="email" name="Trialemail" id="Trialemail" required class="form-control" />
+					</td>
+				</tr>
+				<tr class="padding10 first-collumn">
+					<td class="padding10 first-collumn">
+						RPM or/and Docker?
+					</td>
+					<td>
+						<select id="Trialrepo" name="repo" >
+							<option value="both">RPM and Docker</option>
+							<option value="rpm">RPM</option>
+							<option value="docker">Docker</option>
+						</select>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</body>
 </html>

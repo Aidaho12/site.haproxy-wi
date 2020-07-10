@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	<ul class="link_list">
+		<li><a href="services.py?service=grafana#grafana" title="Grafana">Grafana</a></li>
+		<li><a href="services.py?service=grafana#prometheus" title="Prometheus">Prometheus</a></li>
+	</ul>
+	<a name="grafana"></a>
+	<h3><a href="services.py?service=grafana#grafana" title="Grafana">Grafana</a></h3>	
+	<br />
+	Grafana is a multi-platform open source analytics and interactive visualization software available since 2014. 
+	It provides charts, graphs, and alerts for the web when connected to supported data sources. 
+	It is expandable through a plug-in system. End users can create complex monitoring dashboards using interactive query builders. 
+	<div style="padding: 20px">
+		<img src="/inc/images/grafana_haproxy.png" alt="Servers" class="printscreen" />
+	</div>
+	<a name="prometheus"></a>
+	<h3><a href="services.py?service=grafana#prometheus" title="Prometheus">Prometheus</a></h3>	
+	<br />
+	Prometheus is a free software application used for event monitoring and alerting. 
+	It records real-time metrics in a time series database (allowing for high dimensionality) built using a HTTP pull model, 
+	with flexible queries and real-time alerting
+	<br />
+	<h4>Architecture</h4>
+	A typical monitoring platform with Prometheus is composed of multiple tools:
+	<ul class="link_list">
+		<li>Multiple exporters that typically run on the monitored host to export local metrics.</li>
+		<li>Prometheus to centralize and store the metrics.</li>
+		<li>Alertmanager to trigger alerts based on those metrics.</li>
+		<li>Grafana to produce dashboards.</li>
+		<li>PromQL is the query language used to create dashboards and alerts.</li>
+	</ul>
+	<div style="padding: 20px">
+		<img src="/inc/images/grafana_nginx.png" alt="Servers" class="printscreen" />
+	</div>
+</div>
+{% endblock %}

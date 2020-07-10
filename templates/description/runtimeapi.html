@@ -1,0 +1,449 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding: 20px">
+	 <ul class="link_list">
+		 <li><a href="description.py?description=runtimeapi#commands" title="RunTimeAPI commands">RunTimeAPI commands</a></li>
+		 <li><a href="description.py?description=runtimeapi#maxconn" title="Change Maxconn">Change Maxconn</a></li>
+		 <li><a href="description.py?description=runtimeapi#ip" title="Change IP and Port">Change IP and Port</a></li>
+		 <li><a href="description.py?description=runtimeapi#stick-table" title="Manage stick-table">Manage stick-table</a></li>
+    </ul>
+	RunTime API allows us to change the settings real-time. Without downtime and restarting-reloading the HAProxy service.
+	<br />
+	<br />
+	For instance: we want to disable any frontend or backend server. Changes will not to be saved and the all changes will roll back at the next restarting haproxy. 
+	You can checkbox the "Save change" but there is one problem: it won’t to be saved in the config file, what can cause problems with debagging and it will confusing us. 
+	<br />
+	<br />
+	To avoid these problems HAProxy-WI offers you the opportunity use its interface which works with the HAProxy RunTime API. It will edit runtime configuration and saves changes in the config file
+	without downtime.
+	<br />
+	<br />
+	Of course here works master-slave behavior which means: if you have made changes on the master server the changes will take effect on the slave server too
+	<br />
+	<br />
+    <a name="commands"></a>
+    <h3><a href="description.py?description=runtimeapi#commands" title="RunTimeAPI commands">RunTimeAPI commands</a></h3>
+	<h3>These commands actual for HAProxy v2</h3>
+</div>
+	<table class="overview">
+		<tr class="overviewHead">
+			<td class="padding10 first-collumn">
+				Parameter:
+			</td>
+			<td>
+				Description:
+			</td>
+		</tr>
+				<tr>
+			<td class="padding10 first-collumn">	
+				prompt 
+			</td>
+			<td> 
+				toggle interactive mode with prompt
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+				quit 
+			</td>
+			<td> disconnect</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+				show tls-keys [id|*]
+			</td>
+			<td> show tls keys references or dump tls ticket keys when id specified</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+				set ssl tls-key [id|keyfile] <tlskey>
+			</td>
+			<td> 
+				set the next TLS key for the <id> or <keyfile> listener to <tlskey>
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				show sess [id] 
+			</td>
+			<td> 
+				report the list of current sessions or dump this session
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				shutdown session 
+			</td>
+			<td> 
+				kill a specific session
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				shutdown sessions server 
+			</td>
+			<td> kill sessions on a server</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				clear counters </td>
+			<td> clear max statistics counters (add 'all' for all counters)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				show info </td>
+			<td> report information about the running process</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				show stat </td>
+			<td> report counters for each proxy and server</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+show schema json </td>
+			<td> report schema used for stats</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+disable agent </td>
+			<td> disable agent checks (use 'set server' instead)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+disable health </td>
+			<td> disable health checks (use 'set server' instead)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+disable server </td>
+			<td> disable a server for maintenance (use 'set server' instead)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+enable agent </td>
+			<td> enable agent checks (use 'set server' instead)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+enable health </td>
+			<td> enable health checks (use 'set server' instead)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+enable server </td>
+			<td> enable a disabled server (use 'set server' instead)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+set maxconn server </td>
+			<td> change a server's maxconn setting</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+set server </td>
+			<td> change a server's state weight or address</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+get weight </td>
+			<td> report a server's current weight</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+set weight </td>
+			<td> change a server's weight (deprecated)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+show resolvers [id]</td>
+			<td> dumps counters from all resolvers section and</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+associated name servers
+clear table </td>
+			<td> remove an entry from a table</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+set table [id] </td>
+			<td> update or create a table entry's data</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show table [id]</td>
+			<td> report table usage stats or dump this table's contents</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show peers [peers section]</td>
+			<td> dump some information about all the peers or this peers section</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+disable frontend </td>
+			<td> temporarily disable specific frontend</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+enable frontend </td>
+			<td> re-enable specific frontend</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+set maxconn frontend </td>
+			<td> change a frontend's maxconn setting</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show servers state [id]</td>
+			<td> dump volatile server information (for backend <id>)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show backend </td>
+			<td> list backends in the current running config</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+shutdown frontend </td>
+			<td> stop a specific frontend</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+set dynamic-cookie-key backend </td>
+			<td> change a backend secret key for dynamic cookies</td>
+		<tr>
+			<td class="padding10 first-collumn">	
+				enable dynamic-cookie backend 
+			</td>
+			<td> 
+				enable dynamic cookies on a specific backend
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+disable dynamic-cookie backend </td>
+			<td> disable dynamic cookies on a specific backend</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show errors </td>
+			<td> report last request and response errors for each proxy</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+set maxconn global </td>
+			<td> change the per-process maxconn setting</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+set rate-limit </td>
+			<td> change a rate limiting value</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+set severity-output [none|number|string] </td>
+			<td> set presence of severity level in feedback information</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+set timeout </td>
+			<td> change a timeout setting</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show env [var] </td>
+			<td> dump environment variables known to the process</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show cli sockets </td>
+			<td> dump list of cli sockets</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show cli level </td>
+			<td> display the level of the current CLI session</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+show fd [num] </td>
+			<td> dump list of file descriptors in use</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show activity </td>
+			<td> show per-thread activity stats (for support/developers)</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+operator </td>
+			<td> lower the level of the current CLI session to operator</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+user </td>
+			<td> lower the level of the current CLI session to user</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show startup-logs </td>
+			<td> report logs emitted during HAProxy startup</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+show cache </td>
+			<td> show cache status</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+add acl </td>
+			<td> add acl entry</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+clear acl <id> </td>
+			<td> clear the content of this acl</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+del acl </td>
+			<td> delete acl entry</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+get acl </td>
+			<td> report the patterns matching a sample for an ACL</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+show acl [id] </td>
+			<td> report available acls or dump an acl's contents</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+add map </td>
+			<td> add map entry</td>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				clear map <id> 
+			</td>
+			<td> 
+				clear the content of this map
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+del map </td>
+			<td> delete map entry</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+get map </td>
+			<td> report the keys and values matching a sample for a map</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+set map </td>
+			<td> modify map entry</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+show map [id] </td>
+			<td> report available maps or dump a map's contents</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				show pools 
+			</td>
+			<td> 
+				report information about the memory pools usage
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				show profiling 
+			</td>
+			<td> 
+				show CPU profiling options
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	
+				set profiling 
+			</td>
+			<td> 
+				enable/disable CPU profiling
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">	 
+				show threads 
+			</td>
+			<td> 
+				show some threads debugging information 
+			</td>
+		</tr> 
+	</table>
+
+<div style="padding: 20px">
+		<img src="/inc/images/runtimeapi.png" alt="runtimeapi" class="printscreen" />
+	<br />
+	<br />
+	<br />
+	<a name="maxconn"></a>
+    <h3><a href="description.py?description=runtimeapi#maxconn" title="Change Maxconn">Change Maxconn</a></h3>
+	<h3>Maxconn global</h3>
+	<br />
+	  Dynamically change the global maxconn setting within the range defined by the
+	  initial global maxconn setting. If it is increased and connections were
+	  pending, they will immediately be accepted. If it is lowered to a value below
+	  the current number of connections, new connections acceptation will be
+	  delayed until the threshold is reached. A value of zero restores the initial
+	  setting.
+	<h3>Maxconn frontend</h3>
+	<br />
+	Dynamically change the specified frontend's maxconn setting. Any positive
+	value is allowed including zero, but setting values larger than the global
+	maxconn does not make much sense. If the limit is increased and connections
+	were pending, they will immediately be accepted. If it is lowered to a value
+	below the current number of connections, new connections acceptation will be
+	delayed until the threshold is reached.
+	<br />
+	<br />
+	<iframe width="860" height="515" src="https://www.youtube.com/embed/iaNoD8XFp0Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	
+	<br />
+	<br />
+	<br />
+	<a name="ip"></a>
+    <h3><a href="description.py?description=runtimeapi#ip" title="Change IP and Port">Change IP and Port</a></h3>
+	<br />
+	HAProxy-WI gives ability to change IP and Port for backends on-fly without reloading or restarting HAProxy service. 
+	<br /><br />	
+	How it works: first step: we have to choose the server where we want to change settings. second step: choose needs backend, 
+	third step: choose certain server inside the backend (HAProxy-WI shows running settings, you have ablitity to change them), fourth step: press "Enter".
+	<br /><br />
+	Changes will take effect not only on running configuration, but will be saved in config file too. It means that after restarting HAProxy service they will not be lost.
+	<br /><br />
+	<iframe width="860" height="515" src="https://www.youtube.com/embed/RZfXys0yQhQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<br />
+	<br />
+	<a name="stick-table"></a>
+	<h3><a href="description.py?description=runtimeapi#stick-table" title="Manage stick-table">Manage stick-table</a></h3>
+	<br />
+	HTTP requests are stateless by design. However, this raises some questions regarding how to track user activities,
+	including malicious ones, across requests so that you can collect metrics, block users, and make other decisions
+	based on state. The only way to track user activities between one request and the next is to add a mechanism for
+	storing events and categorizing them by client IP or other key.
+	<br />
+	<br />
+	Out of the box, HAProxy gives you a fast, in-memory storage called stick tables. HAProxy-WI gives you ability to
+	manage it from GUI.
+	<br />
+	<br />
+	<iframe width="860" height="515" src="https://www.youtube.com/embed/9bxc_SgF27M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+{% endblock %}

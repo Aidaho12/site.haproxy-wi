@@ -8,5 +8,6 @@ template = env.get_template('donate.html')
 print('Content-type: text/html\n')
 
 template = template.render(h2 = 1,
-							title = "Support the project!")
+							title = "Support the project!",
+							description = "Supporting the HAProxy-WI project")
 print(template)											

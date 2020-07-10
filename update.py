@@ -11,7 +11,7 @@ print('Content-type: text/html\n')
 if form.getvalue('last_ver'):
 	import glob
 	import os
-	list_of_files = glob.glob('/var/www/repo.haproxy-wi/el7/haproxy-wi-3*')
+	list_of_files = glob.glob('/var/www/repo.haproxy-wi/el7/haproxy-wi-4*')
 	latest_file = max(list_of_files, key=os.path.getctime)
 	latest_file = latest_file.split('/')[-1]
 	latest_file = latest_file.split('noarch')[0]

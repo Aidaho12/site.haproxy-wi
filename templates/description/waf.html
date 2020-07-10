@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding-left: 20px">
+	<ul class="link_list">
+		<li><a href="description.py?description=waf#waf" title="WAF">WAF</a></li>
+		<li><a href="description.py?description=waf#ModSecurity" title="ModSecurity">ModSecurity</a></li>
+		<li><a href="description.py?description=waf#works" title="How it works inside HAProxy-WI">How it works inside HAProxy-WI</a></li>
+		<li><a href="description.py?description=waf#rules" title="The default OWASP-CRS rules">The default OWASP-CRS rules</a></li>
+	</ul>
+	<a name="waf"></a>
+	<h4><a href="description.py?description=waf#waf" title="WAF">Web application firewall</a></h4>
+	A web application firewall (or WAF) filters, monitors, and blocks HTTP traffic to and from a web application.
+	A WAF is differentiated from a regular firewall in that a WAF is able to filter the content of specific web applications while regular firewalls 
+	serve as a safety gate between servers. By inspecting HTTP traffic, it can prevent attacks stemming from web application security flaws, 
+	such as SQL injection, cross-site scripting (XSS), file inclusion, and security misconfigurations.
+	<br />
+	<br />
+	<iframe width="860" height="515" src="https://www.youtube.com/embed/3khuwu_mKwI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<br />
+	<a name="ModSecurity"></a>
+	<h4><a href="description.py?description=waf#ModSecurity" title="ModSecurity">ModSecurity</a></h4>
+	ModSecurity, sometimes called Modsec, is an open-source web application firewall (WAF).
+	Originally designed as a module for the Apache HTTP Server, it has evolved to provide an array of Hypertext Transfer Protocol request 
+	and response filtering capabilities along with other security features across a number of different platforms including Apache HTTP Server, 
+	Microsoft IIS and Nginx. It is a free software released under the Apache license 2.0.
+	<br /><br />
+	The platform provides a rule configuration language known as 'SecRules' for real-time monitoring, logging, 
+	and filtering of Hypertext Transfer Protocol communications based on user-defined rules.
+	<br /><br />
+	Although not its only configuration, ModSecurity is most commonly deployed to provide protections against generic classes of 
+	vulnerabilities using the OWASP ModSecurity Core Rule Set (CRS). This is an open-source set of rules written in ModSecurity's SecRules language. 
+	The project is part of OWASP, the Open Web Application Security Project. Several other rule sets are also available.
+	<br /><br />
+	To detect threats, the ModSecurity engine is deployed embedded within the webserver or as a proxy server in front of a web application. 
+	This allows the engine to scan incoming and outgoing HTTP communications to the endpoint. Dependent on the rule configuration the engine 
+	will decide how communications should be handled which includes the capability to pass, drop, redirect, return a given status code, 
+	execute a user script, and more. 
+	<br />
+	<a name="works"></a>
+	<h4><a href="description.py?description=waf#works" title="How it works inside HAProxy-WI">How it works inside HAProxy-WI</a></h4>
+	HAProxy-WI provides for you ability to install, configure and manage WAF for HAProxy. 
+	It means that: you should press just a one button and you will have the WAF integration with your HAProxy service.
+	<br />
+	<br />
+	HAProxy-WI allows you to choose the operating mode of ModSecurity. You can start/stop/restart WAF service. 
+	Also HAProxy-WI can collect WAF connections metrics.
+	<br />
+	<br />
+	The ModSecurity works with default settings. HAProxy-WI pre-installs OWASP-CRS rules with default settings. 
+	If you want to change any parameters you should edit them in path: /etc/haproxy/waf/rules/
+	<br />
+	<br />
+	<img src="/inc/images/waf.png" alt="Servers" class="printscreen" />
+	<a name="rules"></a>
+	<h4><a href="description.py?description=waf#rules" title="The default OWASP-CRS rules">The default OWASP-CRS rules</a></h4>
+	HAProxy-WI pre-installs the next rules by default:
+	<div class="code_div">
+		<pre>
+modsecurity_crs_10_ignore_static.conf
+modsecurity_crs_10_setup.conf
+modsecurity_crs_11_avs_traffic.conf
+modsecurity_crs_11_brute_force.conf
+modsecurity_crs_11_dos_protection.conf
+modsecurity_crs_13_xml_enabler.conf
+modsecurity_crs_16_authentication_tracking.conf
+modsecurity_crs_16_scanner_integration.conf
+modsecurity_crs_16_username_tracking.conf
+modsecurity_crs_16_username_tracking.conf
+modsecurity_crs_20_protocol_violations.conf
+modsecurity_crs_21_protocol_anomalies.conf
+modsecurity_crs_23_request_limits.conf
+modsecurity_crs_25_cc_known.conf
+modsecurity_crs_25_cc_track_pan.conf
+modsecurity_crs_30_http_policy.conf
+modsecurity_crs_35_bad_robots.conf
+modsecurity_crs_40_generic_attacks.conf
+modsecurity_crs_40_http_parameter_pollution.conf
+modsecurity_crs_41_sql_injection_attacks.conf
+modsecurity_crs_41_xss_attacks.conf
+modsecurity_crs_42_comment_spam.conf
+modsecurity_crs_42_tight_security.conf
+modsecurity_crs_45_trojans.conf
+modsecurity_crs_46_av_scanning.conf
+modsecurity_crs_46_scanner_integration.conf
+modsecurity_crs_46_slr_et_xss_attacks.conf
+modsecurity_crs_46_slr_et_lfi_attacks.conf
+modsecurity_crs_46_slr_et_sqli_attacks.conf
+modsecurity_crs_47_common_exceptions.conf
+modsecurity_crs_49_inbound_blocking.conf
+modsecurity_crs_50_outbound.conf
+modsecurity_crs_55_marketing.conf
+modsecurity_crs_56_pvi_checks.conf
+modsecurity_crs_59_outbound_blocking.conf
+modsecurity_crs_60_correlation.conf
+		</pre>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}	
+
+	<table class="overview">
+		<tr class="overviewHead">
+			<td class="padding10 first-collumn">
+				Parameter:
+			</td>
+			<td>
+				Description:
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				metrics-error.log
+			</td>
+			<td>
+				In the log stores all messages from metrics workers
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				metrics-date.log
+			</td>
+			<td>
+				In the logs stores all messages from metrics master service. If does not start metrics_haproxy.service you should first of all look up here
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				keep_alive.log
+			</td>
+			<td>
+				In the log stores all messages from keep alive service
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				haproxy-wi.log
+			</td>
+			<td>
+				In the logs stores all HAProxy-WI's messages 
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				config_edit.log
+			</td>
+			<td>
+				In the log stores all actions with the configs
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				checker-error.log
+			</td>
+			<td>
+				In the logs stores all messages from checker(alert) workers
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				checker-date.log
+			</td>
+			<td>
+				In the logs stores all messages from checker(alert) master service. If does not start checker_haproxy.service you should first of all look up here
+			</td>
+		</tr>
+		<tr class="even">
+			<td class="padding10 first-collumn">
+				error.log
+			</td>
+			<td>
+				In the logs stores all errors messages from the Apache service
+			</td>
+		</tr>
+		<tr>
+			<td class="padding10 first-collumn">
+				access.log
+			</td>
+			<td>
+				In the logs stores all access messages from the Apache service
+			</td>
+		</tr>
+	</table>
+	<div style="padding: 20px">
+		<img src="/inc/images/logs.png" alt="Logs" class="printscreen" />
+	</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	<h4>The "Auto start" is means:</h4>
+	The "Auto start" service provides ability to start the HAProxy service if it has gone out.
+	<br />
+	<h4>For example:</h4>
+	The HAProxy service has been killed for some reasons, e.g. it has done OOM Killer, 
+	then the "Auto start" service will detect it and will try to start the HAProxy service.
+	<br /><br />
+	If you want to use and if you have install HAProxy service manually <a href="https://haproxy-wi.org/settings.py#haproxy_config">read</a> how you should set HAProxy service.
+	<br />
+	<h4>The "Auto start" Log</h4>
+	The "Auto start" has it own log in an "Internal logs". You can read more about the "Internal logs" 
+	<a href="https://haproxy-wi.org/description.py?description=logs" title="Internal logs">here</a>
+</div>
+{% endblock %}

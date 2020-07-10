@@ -8,5 +8,6 @@ template = env.get_template('index.html')
 print('Content-type: text/html\n')
 
 template = template.render(h2 = 1,
-							title = "About HAProxy-WI")
+							title = "About HAProxy-WI",
+							description = "Web interface(user-friendly web GUI, alerting, monitoring and secure) for managing Haproxy, Nginx and Keepalived servers")
 print(template)											

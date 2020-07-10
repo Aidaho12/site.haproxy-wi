@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}	
+{% from 'include/input_macros.html' import input %}
+<style>
+body, .container {
+	background-color: #fff;
+}
+.top-menu, .footer {
+	display: none !important;
+}
+.container {
+	margin: 0 !important;
+	width: 100% !important;
+	max-width: 100% !important;
+}
+#enter {
+	width: 220px !important; 
+	padding: 10px !important; 
+	background-color: #ededee !important; 
+	font-weight: bold !important;
+}
+</style>
+<center style="margin-top: 15%; background-color: #5d9ceb;">
+	<div id="login-form" style="padding-top: 40px; padding-bottom: 50px; height: 250px; color: #000;">
+		<span id="logo_span">
+			<img src="/inc/images/logo_login.png" width="330">
+		</span>
+		<form name="auth" id="auth" action="login.py" class="form-horizontal" method="post" style="margin-top: 40px;left: 0;float: left;margin-left: 93px;">
+			<br>
+			{{ input('login', class='form-login', placeholder='Login', required='required') }}<br /><br />
+			{{ input('pass', type='password', class='form-login', placeholder='Password', required='required') }}<br /><br />
+			{{ input('ref', type='hidden', value=ref) }}
+			<button type="submit" name="Login" value="Enter" id="enter">Login</button>
+		</form>
+		<div class="alert alert-danger wrong-login">
+			Your login or password is incorrect
+			<br />
+			<span id="ban_10">
+				<br />
+				You can try again in <span id="ban_timer">10</span> seconds
+			</span>
+		</div>
+		<br /><br />
+</center>
+{% endblock %}

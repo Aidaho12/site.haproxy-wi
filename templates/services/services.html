@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}	
+<div style="padding-left: 20px">
+	<h3>HAProxy-WI's services</h3>
+	<ul style="font-size: 15px; color: #aaa;" class="link_list">
+		<li><a href="services.py?service=grafana" title="Grafana and Prometheus servers">Grafana and Prometheus servers</a></li>
+		<li><a href="services.py?service=checker" title="Checker service">Checker service</a></li>
+		<li><a href="services.py?service=auto_start" title="Auto start">Auto start service</a></li>
+		<li><a href="services.py?service=fail2ban" title="Fail2ban">Fail2ban</a></li>
+		<li><a href="services.py?service=smon" title="SMON">SMON</a></li>
+	</ul>
+</div>
+{% endblock %}

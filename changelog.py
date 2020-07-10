@@ -9,6 +9,7 @@ template = env.get_template('changelog.html')
 print('Content-type: text/html\n')
 
 template = template.render(h2 = 1,
-							title = "Changelog")
+							title = "Changelog",
+							description = "Changelog/Roadmap")
 print(template)												
 									
