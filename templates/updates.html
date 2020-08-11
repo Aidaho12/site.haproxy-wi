@@ -5,45 +5,40 @@
 		<li><a href="updates.py#yum" title="RPM installation">Update via yum</a></li>
 		<li><a href="updates.py#web" title="Manual installation">Update via HAProxy-WI</a></li>
 		<li><a href="updates.py#4.2.2" title="Updating from 4.2.2 and earlier to later versions">Updating from 4.2.2 and earlier to later versions</a></li>
+		<li><a href="updates.py#4.2.2" title="Updating from 4.4.1 to 4.4.2 version">Updating from 4.4.1 to 4.4.2 version</a></li>
 	</ul>
 	<a name="yum"></a>	
 	<h3><a href="updates.py#yum" title="Update via yum">YUM</a></h3>
 	<br />
 	If you use RPM package then just type:
-	<div class="code_div">
-		<pre>
-$ sudo yum update haproxy-wi
-		</pre>
+	<br />
+	<div class="github_gist">
+		<script src="https://gist.github.com/Aidaho12/aefa43b6da08632a8015573a0bb19caa.js"></script>
 	</div>
 	If the server uses proxy to connection to the Internet add proxy settings in yum.conf:
-	<div class="code_div">
-		<pre>
-$ sudo vi /etc/yum.conf
-proxy=proto://ip:port
-		</pre>
+
+	<br />
+	<div class="github_gist">
+		<script src="https://gist.github.com/Aidaho12/eadf97e3abdc821d41973827eb32a208.js"></script>
 	</div>
 	<br />
 	<a name="web"></a>	
 	<h3><a href="updates.py#web" title="Update via web">Update the HAProxy-WI via the Web Interface</a></h3>
 	<br />
 	Before update via Web Interface you should add persmission for the apache user for sudo:
-	<div class="code_div">
-		<pre>
-$ sudo visudo
-		</pre>
+	<br />
+	<div class="github_gist">
+		<script src="https://gist.github.com/Aidaho12/fe77ba66c758636643800e23803abfc3.js"></script>
 	</div>
 	Adds persmission for the apache user:
-		<div class="code_div">
-		<pre>
-apache          ALL=(ALL)       NOPASSWD: /usr/bin/yum
-		</pre>
+	<br />
+	<div class="github_gist">
+		<script src="https://gist.github.com/Aidaho12/5d2bdcd993b013d79fe8e544d2de4d8c.js"></script>
 	</div>
-		If the server uses proxy to connection Internet add proxy settings in yum.conf:
-	<div class="code_div">
-		<pre>
-$ sudo vi /etc/yum.conf
-proxy=proto://ip:port
-		</pre>
+	If the server uses proxy to connection Internet add proxy settings in yum.conf:
+	<br />
+	<div class="github_gist">
+		<script src="https://gist.github.com/Aidaho12/eadf97e3abdc821d41973827eb32a208.js"></script>
 	</div>
 	<br />
 	<b>Before uses RPM repository you should donate to support project on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a> 
@@ -55,20 +50,32 @@ Please indicate the purpose of the donation, if any.</b>
 	How to start use RPM read in <a href="/installation.py#rpm" title="Installation">Installation</a> man
 	<br /><br />
 	<a name="4.2.2"></a>	
-	<h3><a href="updates.py#2.4.2" title="Updating from 4.2.2 and earlier to later versions">Updating from 4.2.2 and earlier to later versions</a></h3>
+	<h3><a href="updates.py#4.2.2" title="Updating from 4.2.2 and earlier to later versions">Updating from 4.2.2 and earlier to later versions</a></h3>
 	<br />
 	Becouse of a new version of Python there is conflict between two packages: The newer package python36-mod_wsgi conflicts with the oldier python35u-mod_wsgi.
-. 	For updating to version 4.2.3 you should delete the old package before update:
-<div class="code_div">
-		<pre>
-$ sudo rpm -e python35u-mod_wsgi --nodeps
-		</pre>
+ 	For updating to version 4.2.3 you should delete the old package before update:
+	<div class="github_gist">
+		<script src="https://gist.github.com/Aidaho12/f337ccc163d3053509207e453a25c4d2.js"></script>
 	</div>
 	After deleting you can run updating via HAProxy-WI or manually: 
-	<div class="code_div">
-		<pre>
-$ sudo yum update haproxy-wi
-		</pre>
+	<div class="github_gist">
+		<script src="https://gist.github.com/Aidaho12/aefa43b6da08632a8015573a0bb19caa.js"></script>
 	</div>
+	<br />
+	<a name="4.4.2"></a>
+	<h3><a href="updates.py#2.4.2" title="Updating from 4.4.1 to 4.4.2 version">Updating from 4.4.1 to 4.4.2 version</a></h3>
+	<br />
+	Because of has been made a lot of work for improving work with groups and roles needs to update a HAProxy-WI DB. It can be done only manually.
+	<br />
+	<br />
+	<b> Note: you must be logged on the HAProxy-WI before actions or have admin user with the group "All" </b>
+	<br /><br />
+	First of all update HAProxy-WI, after run next commands:
+	<div class="github_gist">
+		<script src="https://gist.github.com/Aidaho12/0e60eff14beeb8744f8990a4a0ffde33.js"></script>
+	</div>
+	This action will drop settings to the default.
+	<br />
+	Also you should re-create all you groups.
 </div>
 {% endblock %}

@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <div style="padding-left: 20px">
-    <h4>Simple monitoring TCP ports with alerting via Telegram and WEB pannel</h4>
+    <h4>Simple monitoring ports with alerting via Telegram and WEB pannel</h4>
     <ul style="font-size: 15px; color: #aaa;" class="link_list">
         <li><a href="services.py?service=smon#features" title="Features">Features</a></li>
         <li><a href="services.py?service=smon#portcheck" title="Port check">Port check</a></li>
         <li><a href="services.py?service=smon#http" title="HTTP status check">HTTP status check</a></li>
         <li><a href="services.py?service=smon#body" title="BODY answer check">BODY answer check</a></li>
+        <li><a href="services.py?service=smon#installation" title="SMON Installation">Installation</a></li>
     </ul>
     <a name="features"></a>
     <h3><a href="services.py?service=smon#features" title="Features">Features:</a></h3>
@@ -44,5 +45,26 @@
     properly phrase that was set for searching in the body answer then alert will raise.
     <br />
     BODY answer check also includes HTTP status and port checking
+    <br />
+    <br />
+    <iframe width="860" height="515" src="https://www.youtube.com/embed/bJtRJeHG5B0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <br /><br />
+    <a name="installation"></a>
+    <h3><a href="services.py?service=smon#installation" title="SMON installation">Installation</a></h3>
+    <br />
+    <b>Before uses RPM repository you should donate to support project on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>
+        or on <a href="https://www.paypal.me/loginovpavel" title="PayPal" target="_blank">PayPal</a> and I will send you credentials for access.
+        Actual prices you can see on <a href="https://www.patreon.com/haproxy_wi/overview" title="Patreon" target="_blank">Patreon</a>. But you can donate as many as you can or as you want. Please indicate the purpose of the donation, if any.</b>
+    <br /><br />
+    For SMON installation you should run:
+    <div class="github_gist">
+        <script src="https://gist.github.com/Aidaho12/eb77283d68bca35e4e2b4c86d1485803.js"></script>
+    </div>
+    SMON works only with HAProxy-WI start from 4.4 version
+    <br />
+    <br />
+    How start using RPM you can read <a href="https://haproxy-wi.org/installation.py#rpm" title="Using RPM">here</a>
+    <br /><br />
 </div>
 {% endblock %}

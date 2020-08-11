@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}	
+
+<table class="overview hover order-column" id="users">
+	<thead>
+	<tr class="overviewHead">
+		<th class="padding10 first-collumn" style="width: 200px;">
+			Username:
+		</th>
+		<th>
+			Email:
+		</th>
+		<th>
+			Expire date:
+		</th>
+		<th>
+			Status:
+		</th>
+		<th>
+			Donation method:
+		</th>
+		{% if user.0.6 == 'Trial' or user.0.6 == 'PayPal' %}
+		<th>
+			Subscription:
+		</th>
+		{% endif %}
+		<th>
+			Subscription type:
+		</th>
+	</tr>
+	</thead>
+	</tbody>
+	{% for u in user %}
+		<tr class="{{ loop.cycle('odd', 'even') }}" id="user-{{u.0}}">
+			<td class="padding10 first-collumn" style="width: 200px;">
+				<span id="name-{{u.0}}">{{u.1}}</span>
+			</td>
+			<td>
+				{{ u.2 }}
+			</td>
+			<td>
+				{{u.4}}
+			</td>
+			<td id="status-{{u.0}}">
+				<b>
+				{% if u.5 == 1 %}
+					<span style="color: green">Active
+				{% else %}
+					<span style="color: red">Blocked
+				{% endif %}
+					</span>
+				</b>
+			</td>
+			<td>
+				{% if u.6 == 'Cloud' %}
+					Patreon
+				{% else %}
+					{{u.6}}
+				{% endif %}
+			</td>
+			{% if u.6 == 'Trial' or u.6 == 'PayPal' %}
+			<td>
+				<a href="donate.py" target="_blank" title="Prolong subscribe">Prolong</a>
+			</td>
+			{% endif %}
+			<td>
+				{% if u.6 == 'Trial' %}
+					OEM Trial License
+				{% elif u.6 == 'PayPal' or u.6 == 'Patreon' %}
+					OEM License
+				{% elif u.6 == 'Cloud' %}
+					HAProxy-WI Cloud
+				{% endif %}
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

@@ -4,12 +4,40 @@
 
 <h1>Good news everyone</h1>
 
+	<div class="changelog">
+		<a name="4_5"></a>
+		<h3><a href="changelog.py#4_5" title="v4.5">v4.5.0 (02.10.2020)</a></h3>
+		<ol>
+			<li>Support for Let's Encryption has been added</li>
+			<li>Was added the ability to view and kill HAProxy sessions</li>
+		</ol>
+	</div>
+
+<div class="changelog">
+	<a name="4_4_3"></a>
+	<h3><a href="changelog.py#4_4_3" title="v4.4.3">v4.4.3 (15.09.2020)</a></h3>
+	<ol>
+		<li>Was added the ability to clear a whole sticky-table</li>
+		<li>Was added the ability to Autorefresh for SMON dashboard</li>
+		<li>Was added the ability to enable/disable WAF rules</li>
+	</ol>
+</div>
+
 <div class="changelog">
 	<a name="4_4_2"></a>
 	<h3><a href="changelog.py#4_4_2" title="v4.4.2">v4.4.2 (02.09.2020)</a></h3>
 	<ol>
-		<li>Was added ability enable/disable WAF rules</li>
 		<li>Was added "Antibot" option on the "Add" page</li>
+		<li>We continue to improve the "Admin area" and the "Servers" pages</li>
+		<li>Were fixed bugs with "Backup"</li>
+		<li>Grafana and Prometheus installation moved to the "Admin area"</li>
+		<li>Was improved the "Overview" page: the "editor" role can see members of its group</li>
+		<li>Was improved the "Overview" page: the "editor" role can see Recent HAProxy-WI log</li>
+		<li>Were fixed interface bugs for the roles: "editor" ang "guest"</li>
+		<li>A lot of work has been done to improve the work of the groups</li>
+		<li>Were added their own the "Settings" for each group(Required to recreate groups after update. Read more detail
+			<a href="https://haproxy-wi.org/updates.py#4.2.2" title="Updating from 4.4.1 to 4.4.2 version">here</a>)</li>
+		<li>Were added their own the "Internal logs" for each group</li>
 	</ol>
 </div>
 
@@ -17,9 +45,13 @@
 	<a name="4_4_1"></a>
 	<h3><a href="changelog.py#4_4_1" title="v4.4.1">v4.4.1 (15.08.2020)</a></h3>
 	<ol>
-		<li>Was added ability to edit black and white lists without restarting HAProxy service</li>
+		<li>Was added the ability to edit black and white lists without restarting HAProxy service</li>
 		<li>Was improved the "HAProxy server overview": were added Bytes in and Bytes out</li>
 		<li>Was improved the "HAProxy server overview": were added current number of sessions and cumulative number of sessions processed so far</li>
+		<li>Was added the ability to use the "SSL" page for Nginx too</li>
+		<li>Were fixed bugs with "Add" interface</li>
+		<li>Was improved navigation in the tabs</li>
+		<li>Were improved the "Admin area" and the "Servers" pages</li>
 	</ol>
 </div>
 
@@ -29,7 +61,10 @@
 	<ol>
 		<li>REST API is deprecated and will be deleted</li>
 		<li>Was improved the "Bread crumbs"</li>
+		<li>Was improved redirect with login expired</li>
 		<li>Integration with <a href="https://github.com/Aidaho12/smon" title="Simple port monitoring" target="_blank">SMON</a></li>
+		<li>Was added new and more convenient notifications</li>
+		<li>Many small interface fixes</li>
 	</ol>
 </div>
 
@@ -618,5 +653,5 @@
 		<li> Fixed bugs</li>
 	</ol>
 </div>
-
+</div>
 {% endblock %}
